@@ -2,7 +2,7 @@ extends Control
 
 var can_change_key = false
 var action_string
-enum ACTIONS {UP, DOWN, LEFT, RIGHT}
+enum ACTIONS {UP, DOWN, LEFT, RIGHT, INTERACT}
 
 func _ready():
 	_set_keys()  
@@ -26,6 +26,9 @@ func b_change_key_LEFT():
 
 func b_change_key_RIGHT():
 	_mark_button("RIGHT")
+
+func b_change_key_INTERACT():
+	_mark_button("INTERACT")
 
 func _mark_button(string):
 	can_change_key = true
@@ -57,7 +60,7 @@ func _change_key(new_key):
 	_set_keys()
 
 func _on_Button_button_down():
-	get_tree().change_scene("res://Scenes/firstLevel.tscn")
+	get_tree().change_scene("res://Scenes/firstWorld.tscn")
 
 
 var save_path = "res://settings.cfg"

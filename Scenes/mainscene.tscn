@@ -19,7 +19,7 @@ margin_bottom = 545.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
 margin_right = 99.0
-margin_bottom = 164.0
+margin_bottom = 188.0
 
 [node name="HBoxCont_UP" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_right = 99.0
@@ -88,27 +88,45 @@ margin_right = 48.0
 margin_bottom = 20.0
 toggle_mode = true
 
-[node name="SaveSettings" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
+[node name="HBoxCont_INTERACT" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_top = 96.0
 margin_right = 99.0
 margin_bottom = 116.0
-text = "Save Controls"
 
-[node name="LoadSettings" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_INTERACT"]
+margin_top = 3.0
+margin_right = 50.0
+margin_bottom = 17.0
+text = "Interact"
+
+[node name="Button" type="Button" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_INTERACT"]
+margin_left = 54.0
+margin_right = 66.0
+margin_bottom = 20.0
+toggle_mode = true
+
+[node name="SaveSettings" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_top = 120.0
 margin_right = 99.0
 margin_bottom = 140.0
-text = "Load Controls"
+text = "Save Controls"
 
-[node name="Play" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
+[node name="LoadSettings" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_top = 144.0
 margin_right = 99.0
 margin_bottom = 164.0
+text = "Load Controls"
+
+[node name="Play" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 168.0
+margin_right = 99.0
+margin_bottom = 188.0
 text = "Start Gayme"
 [connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/HBoxCont_UP/Button" to="." method="b_change_key_UP"]
 [connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/HBoxCont_DOWN/Button" to="." method="b_change_key_DOWN"]
 [connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/HBoxCont_LEFT/Button" to="." method="b_change_key_LEFT"]
 [connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/HBoxCont_RIGHT/Button" to="." method="b_change_key_RIGHT"]
+[connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/HBoxCont_INTERACT/Button" to="." method="b_change_key_INTERACT"]
 [connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/SaveSettings" to="." method="saveSettings"]
 [connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/LoadSettings" to="." method="loadSettings"]
 [connection signal="button_down" from="Panel/ScrollContainer/VBoxContainer/Play" to="." method="_on_Button_button_down"]
