@@ -1,0 +1,114 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/mainscene.gd" type="Script" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+margin_left = 84.0
+margin_top = 53.0
+margin_right = 911.0
+margin_bottom = 545.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
+margin_right = 99.0
+margin_bottom = 164.0
+
+[node name="HBoxCont_UP" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_right = 99.0
+margin_bottom = 20.0
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_UP"]
+margin_top = 3.0
+margin_right = 18.0
+margin_bottom = 17.0
+text = "Up"
+
+[node name="Button" type="Button" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_UP"]
+margin_left = 22.0
+margin_right = 34.0
+margin_bottom = 20.0
+toggle_mode = true
+
+[node name="HBoxCont_DOWN" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 99.0
+margin_bottom = 44.0
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_DOWN"]
+margin_top = 3.0
+margin_right = 36.0
+margin_bottom = 17.0
+text = "Down"
+
+[node name="Button" type="Button" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_DOWN"]
+margin_left = 40.0
+margin_right = 52.0
+margin_bottom = 20.0
+toggle_mode = true
+
+[node name="HBoxCont_LEFT" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 48.0
+margin_right = 99.0
+margin_bottom = 68.0
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_LEFT"]
+margin_top = 3.0
+margin_right = 24.0
+margin_bottom = 17.0
+text = "Left"
+
+[node name="Button" type="Button" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_LEFT"]
+margin_left = 28.0
+margin_right = 40.0
+margin_bottom = 20.0
+toggle_mode = true
+
+[node name="HBoxCont_RIGHT" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 72.0
+margin_right = 99.0
+margin_bottom = 92.0
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_RIGHT"]
+margin_top = 3.0
+margin_right = 32.0
+margin_bottom = 17.0
+text = "Right"
+
+[node name="Button" type="Button" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_RIGHT"]
+margin_left = 36.0
+margin_right = 48.0
+margin_bottom = 20.0
+toggle_mode = true
+
+[node name="SaveSettings" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 96.0
+margin_right = 99.0
+margin_bottom = 116.0
+text = "Save Controls"
+
+[node name="LoadSettings" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 120.0
+margin_right = 99.0
+margin_bottom = 140.0
+text = "Load Controls"
+
+[node name="Play" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 144.0
+margin_right = 99.0
+margin_bottom = 164.0
+text = "Start Gayme"
+[connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/HBoxCont_UP/Button" to="." method="b_change_key_UP"]
+[connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/HBoxCont_DOWN/Button" to="." method="b_change_key_DOWN"]
+[connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/HBoxCont_LEFT/Button" to="." method="b_change_key_LEFT"]
+[connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/HBoxCont_RIGHT/Button" to="." method="b_change_key_RIGHT"]
+[connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/SaveSettings" to="." method="saveSettings"]
+[connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/LoadSettings" to="." method="loadSettings"]
+[connection signal="button_down" from="Panel/ScrollContainer/VBoxContainer/Play" to="." method="_on_Button_button_down"]
