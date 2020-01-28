@@ -35,7 +35,9 @@ text = "Up"
 margin_left = 22.0
 margin_right = 34.0
 margin_bottom = 20.0
+focus_mode = 0
 toggle_mode = true
+enabled_focus_mode = 0
 
 [node name="HBoxCont_DOWN" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_top = 24.0
@@ -52,7 +54,9 @@ text = "Down"
 margin_left = 40.0
 margin_right = 52.0
 margin_bottom = 20.0
+focus_mode = 0
 toggle_mode = true
+enabled_focus_mode = 0
 
 [node name="HBoxCont_LEFT" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_top = 48.0
@@ -69,7 +73,9 @@ text = "Left"
 margin_left = 28.0
 margin_right = 40.0
 margin_bottom = 20.0
+focus_mode = 0
 toggle_mode = true
+enabled_focus_mode = 0
 
 [node name="HBoxCont_RIGHT" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_top = 72.0
@@ -86,7 +92,9 @@ text = "Right"
 margin_left = 36.0
 margin_right = 48.0
 margin_bottom = 20.0
+focus_mode = 0
 toggle_mode = true
+enabled_focus_mode = 0
 
 [node name="HBoxCont_INTERACT" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_top = 96.0
@@ -103,7 +111,9 @@ text = "Interact"
 margin_left = 54.0
 margin_right = 66.0
 margin_bottom = 20.0
+focus_mode = 0
 toggle_mode = true
+enabled_focus_mode = 0
 
 [node name="SaveSettings" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_top = 120.0

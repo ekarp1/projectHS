@@ -11,7 +11,12 @@ func _set_keys():
 	for j in ACTIONS:
 		get_node("Panel/ScrollContainer/VBoxContainer/HBoxCont_" + str(j) + "/Button").set_pressed(false)
 		if !InputMap.get_action_list(j).empty():
-			get_node("Panel/ScrollContainer/VBoxContainer/HBoxCont_" + str(j) + "/Button").set_text(InputMap.get_action_list(j)[0].as_text())
+			var buttonString
+			if (InputMap.get_action_list(j)[0] is InputEventMouseButton):
+				buttonString = "Mouse Button " + str(InputMap.get_action_list(j)[0].get_button_index())
+			else:
+				buttonString = InputMap.get_action_list(j)[0].as_text()
+			get_node("Panel/ScrollContainer/VBoxContainer/HBoxCont_" + str(j) + "/Button").set_text(buttonString)
 		else:
 			get_node("Panel/ScrollContainer/VBoxContainer/HBoxCont_" + str(j) + "/Button").set_text("No Button!")
 
@@ -39,10 +44,12 @@ func _mark_button(string):
 			get_node("Panel/ScrollContainer/VBoxContainer/HBoxCont_" + str(j) + "/Button").set_pressed(false)
 
 func _input(event):
-	if event is InputEventKey: 
+	if event is InputEventKey or event is InputEventJoypadButton or (event is InputEventMouseButton and event.get_button_index() >= 1 and event.get_button_index() <= 3): 
+	
 		if can_change_key:
 			_change_key(event)
 			can_change_key = false
+			
 
 func _change_key(new_key):
 	#Delete key of pressed button
@@ -53,7 +60,7 @@ func _change_key(new_key):
 	for i in ACTIONS:
 		if InputMap.action_has_event(i, new_key):
 			InputMap.action_erase_event(i, new_key)
-			
+	
 	#Add new Key
 	InputMap.action_add_event(action_string, new_key)
 	
