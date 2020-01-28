@@ -19,4 +19,4 @@ func _process(delta):
 				if(i + 1 == 1):
 					get_node("/root/World/CanvasLayer/textbox").visible = !get_node("/root/World/CanvasLayer/textbox").visible
 				elif(i + 1 == 2):
-					print("I'm different")
+					get_tree().change_scene("res://Scenes/firstArena.tscn")

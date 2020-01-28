@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/firstLevel.gd" type="Script" id=1]
 [ext_resource path="res://Images/tile.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/NPC.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scripts/KinematicBody2D.gd" type="Script" id=4]
-[ext_resource path="res://Images/player.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -27,9 +26,6 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 } ]
 0/z_index = 0
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 32, 32 )
-
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -46,18 +42,5 @@ position = Vector2( 704, 416 )
 [node name="NPC_TWO" parent="." instance=ExtResource( 3 )]
 position = Vector2( 96, 96 )
 
-[node name="Player" type="KinematicBody2D" parent="."]
-editor/display_folded = true
-position = Vector2( 288, 208 )
-script = ExtResource( 4 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource( 3 )
-
-[node name="player" type="Sprite" parent="Player"]
-position = Vector2( -9.59635e-06, 0 )
-scale = Vector2( 4, 4 )
-texture = ExtResource( 5 )
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-current = true
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 260, 204 )
