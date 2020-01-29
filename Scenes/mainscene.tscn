@@ -131,7 +131,7 @@ text = "Load Controls"
 margin_top = 168.0
 margin_right = 99.0
 margin_bottom = 188.0
-text = "Start Gayme"
+text = "Play"
 [connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/HBoxCont_UP/Button" to="." method="b_change_key_UP"]
 [connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/HBoxCont_DOWN/Button" to="." method="b_change_key_DOWN"]
 [connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/HBoxCont_LEFT/Button" to="." method="b_change_key_LEFT"]
