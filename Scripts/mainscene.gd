@@ -2,7 +2,8 @@ extends Control
 
 var can_change_key = false
 var action_string
-enum ACTIONS {UP, DOWN, LEFT, RIGHT, INTERACT}
+enum ACTIONS {UP, DOWN, LEFT, RIGHT, INTERACT, FIRSTABILITY, BACK}
+var fullscreen = false
 
 func _ready():
 	_set_keys()  
@@ -34,6 +35,12 @@ func b_change_key_RIGHT():
 
 func b_change_key_INTERACT():
 	_mark_button("INTERACT")
+
+func b_change_key_FIRSTABILITY():
+	_mark_button("FIRSTABILITY")
+
+func b_change_key_BACK():
+	_mark_button("BACK")
 
 func _mark_button(string):
 	can_change_key = true
@@ -75,11 +82,15 @@ var config = ConfigFile.new()
 var load_response = config.load(save_path)
 
 func saveSettings():
+	# Save all of the controls
 	for j in ACTIONS:
 		config.set_value("Controls", str(j), InputMap.get_action_list(j)[0])
+	# Save the fullscreen state
+	config.set_value("Video", "Fullscreen", fullscreen)
 	config.save(save_path)
 
 func loadSettings():
+	# Load all of the controls
 	for j in ACTIONS:
 		#Delete key of button
 		if !InputMap.get_action_list(j).empty():
@@ -87,3 +98,14 @@ func loadSettings():
 		#Add new Key
 		InputMap.action_add_event( j, config.get_value("Controls", str(j), j) )
 	_set_keys()
+	
+	# Load the fullscreen state
+	fullscreen = config.get_value("Video", "Fullscreen", fullscreen)
+	OS.window_fullscreen = fullscreen
+
+func fullscreenToggle():
+	fullscreen = !OS.window_fullscreen
+	OS.window_fullscreen = fullscreen
+
+func quitGame():
+	 get_tree().quit()

@@ -16,7 +16,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if (health <= 0):
-		get_tree().change_scene("res://Scenes/firstWorld.tscn")
+		# Play a death sound
+		get_node("/root/World/EnemyDeath").play()
+		# Leave the arena
+		get_node("/root/World").loadLevel(get_node("/root/World").firstLevelScene)
 		#get_parent().remove_child(self)
 	if (health + HEALRATE <= MAXHEALTH and waitToHeal % 20 == 19):
 		health = health + HEALRATE

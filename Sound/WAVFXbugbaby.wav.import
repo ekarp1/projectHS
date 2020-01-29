@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/WAVFXbugbaby.wav-4b10e26e8b9b76bdf7f93ecaeff270cc.sample"
+
+[deps]
+
+source_file="res://Sound/WAVFXbugbaby.wav"
+dest_files=[ "res://.import/WAVFXbugbaby.wav-4b10e26e8b9b76bdf7f93ecaeff270cc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

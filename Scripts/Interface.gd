@@ -4,6 +4,7 @@ extends Control
 # var a = 2
 # var b = "text"
 
+const ENEMYPARENT = "/root/World/Arena"
 const RECHARGETEXT = "Recharging Laser..."
 
 # Called when the node enters the scene tree for the first time.
@@ -12,12 +13,14 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if has_node("/root/Arena/Enemy"):
-		get_node("healthbar").text = "Enemy Health: " + str(get_node("/root/Arena/Enemy").health) + " / " + str(get_node("/root/Arena/Enemy").MAXHEALTH)
+	if has_node(ENEMYPARENT + "/Enemy"):
+		get_node("healthbar").text = "Enemy Health: " + str(get_node(ENEMYPARENT + "/Enemy").health) + " / " + str(get_node(ENEMYPARENT + "/Enemy").MAXHEALTH)
 	else:
 		get_node("healthbar").text = ""
-	if has_node("/root/Arena"):
-		if get_node("/root/Arena").recharging == true:
+	if has_node("/root/World/Arena"):
+		if get_node("/root/World/Arena").recharging == true:
 			get_node("laserstatus").text = RECHARGETEXT
-		elif get_node("laserstatus").text == RECHARGETEXT and get_node("/root/Arena").recharging == false:
+		elif get_node("laserstatus").text == RECHARGETEXT and get_node("/root/World/Arena").recharging == false:
 			get_node("laserstatus").text = ""
+	else:
+		get_node("laserstatus").text = ""

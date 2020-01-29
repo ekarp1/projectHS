@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/firstArena.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Images/tempTexture.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scripts/Interface.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 624, 32 )
@@ -61,26 +60,3 @@ texture = ExtResource( 3 )
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
 position = Vector2( 628, 160 )
 continuous_cd = 2
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="CanvasLayer"]
-margin_left = 108.0
-margin_top = 72.0
-margin_right = 148.0
-margin_bottom = 112.0
-script = ExtResource( 5 )
-
-[node name="healthbar" type="Label" parent="CanvasLayer/Control"]
-margin_left = 76.0
-margin_top = 60.0
-margin_right = 116.0
-margin_bottom = 74.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-
-[node name="laserstatus" type="Label" parent="CanvasLayer/Control"]
-margin_left = 76.0
-margin_top = 76.0
-margin_right = 116.0
-margin_bottom = 90.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )

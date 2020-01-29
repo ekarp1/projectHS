@@ -32,7 +32,7 @@ func _process(delta):
 	update()
 
 func _physics_process(delta):
-	if(Input.is_action_just_pressed("INTERACT")):
+	if(Input.is_action_just_pressed("FIRSTABILITY")):
 		mousePos = get_global_mouse_position()
 		
 		if (recharging == false):
