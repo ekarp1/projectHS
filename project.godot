@@ -15,8 +15,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="testgame"
-run/main_scene="res://Scenes/mainscene.tscn"
+config/name="Project: Hellscape"
+run/main_scene="res://Scenes/firstWorld.tscn"
 boot_splash/image="res://Images/loadImg.png"
 config/icon="res://Images/player.png"
 

@@ -21,6 +21,9 @@ func _set_keys():
 		else:
 			get_node("Panel/ScrollContainer/VBoxContainer/HBoxCont_" + str(j) + "/Button").set_text("No Button!")
 
+# -------------------------------------------------------------------------------------
+# Change keybind functions
+
 func b_change_key_UP():
 	_mark_button("UP")
 
@@ -41,6 +44,9 @@ func b_change_key_FIRSTABILITY():
 
 func b_change_key_BACK():
 	_mark_button("BACK")
+
+# Change keybind functions ^
+# -------------------------------------------------------------------------------------
 
 func _mark_button(string):
 	can_change_key = true
@@ -73,9 +79,30 @@ func _change_key(new_key):
 	
 	_set_keys()
 
-func _on_Button_button_down():
-	get_tree().change_scene("res://Scenes/firstWorld.tscn")
+# -------------------------------------------------------------------------------------
+# Volume and Sound Settings
 
+func mainVolChanged(value):
+	# Set the volume throughout the entire game
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), get_node("/root/World").percentToDb(value))
+
+
+func musicVolChanged(value):
+	# get_node("/root/World").musicVol = get_node("/root/World").percentToDb(value)
+	# Change the music to the right volume
+	get_node("/root/World/Music").volume_db = get_node("/root/World").percentToDb(value)
+
+
+func soundEffectVolChanged(value):
+	# get_node("/root/World").soundEffectVol = get_node("/root/World").percentToDb(value)
+	# Change the death sound to the right volume
+	get_node("/root/World/EnemyDeath").volume_db = get_node("/root/World").percentToDb(value)
+
+# Volume and Sound Settings ^
+# -------------------------------------------------------------------------------------
+
+# -------------------------------------------------------------------------------------
+# Load and save settings
 
 var save_path = "res://settings.cfg"
 var config = ConfigFile.new()
@@ -103,9 +130,17 @@ func loadSettings():
 	fullscreen = config.get_value("Video", "Fullscreen", fullscreen)
 	OS.window_fullscreen = fullscreen
 
+# Load and save settings ^
+# -------------------------------------------------------------------------------------
+
+func startGame():
+	# Load the starting level
+	get_node("/root/World").loadLevel(get_node("/root/World").firstLevelScene)
+
 func fullscreenToggle():
 	fullscreen = !OS.window_fullscreen
 	OS.window_fullscreen = fullscreen
 
 func quitGame():
 	 get_tree().quit()
+

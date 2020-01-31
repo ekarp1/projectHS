@@ -16,13 +16,16 @@ margin_left = 84.0
 margin_top = 53.0
 margin_right = 911.0
 margin_bottom = 545.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
-margin_right = 97.0
-margin_bottom = 284.0
+margin_right = 131.0
+margin_bottom = 398.0
 
 [node name="HBoxCont_UP" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_right = 97.0
+margin_right = 131.0
 margin_bottom = 20.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_UP"]
@@ -41,7 +44,7 @@ enabled_focus_mode = 0
 
 [node name="HBoxCont_DOWN" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_top = 24.0
-margin_right = 97.0
+margin_right = 131.0
 margin_bottom = 44.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_DOWN"]
@@ -60,7 +63,7 @@ enabled_focus_mode = 0
 
 [node name="HBoxCont_LEFT" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_top = 48.0
-margin_right = 97.0
+margin_right = 131.0
 margin_bottom = 68.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_LEFT"]
@@ -79,7 +82,7 @@ enabled_focus_mode = 0
 
 [node name="HBoxCont_RIGHT" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_top = 72.0
-margin_right = 97.0
+margin_right = 131.0
 margin_bottom = 92.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_RIGHT"]
@@ -98,7 +101,7 @@ enabled_focus_mode = 0
 
 [node name="HBoxCont_INTERACT" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_top = 96.0
-margin_right = 97.0
+margin_right = 131.0
 margin_bottom = 116.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_INTERACT"]
@@ -117,7 +120,7 @@ enabled_focus_mode = 0
 
 [node name="HBoxCont_FIRSTABILITY" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_top = 120.0
-margin_right = 97.0
+margin_right = 131.0
 margin_bottom = 140.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_FIRSTABILITY"]
@@ -136,7 +139,7 @@ enabled_focus_mode = 0
 
 [node name="HBoxCont_BACK" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_top = 144.0
-margin_right = 97.0
+margin_right = 131.0
 margin_bottom = 164.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_BACK"]
@@ -155,32 +158,80 @@ enabled_focus_mode = 0
 
 [node name="Fullscreen" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_top = 168.0
-margin_right = 97.0
+margin_right = 131.0
 margin_bottom = 188.0
 text = "Fullscreen"
 
-[node name="SaveSettings" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
+[node name="mainVolume" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_top = 192.0
-margin_right = 97.0
-margin_bottom = 212.0
+margin_right = 131.0
+margin_bottom = 226.0
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/mainVolume"]
+margin_right = 131.0
+margin_bottom = 14.0
+text = "Main Volume"
+
+[node name="HSlider" type="HSlider" parent="Panel/ScrollContainer/VBoxContainer/mainVolume"]
+margin_top = 18.0
+margin_right = 131.0
+margin_bottom = 34.0
+value = 50.0
+
+[node name="musicVolume" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 230.0
+margin_right = 131.0
+margin_bottom = 264.0
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/musicVolume"]
+margin_right = 131.0
+margin_bottom = 14.0
+text = "Music Volume"
+
+[node name="HSlider" type="HSlider" parent="Panel/ScrollContainer/VBoxContainer/musicVolume"]
+margin_top = 18.0
+margin_right = 131.0
+margin_bottom = 34.0
+value = 50.0
+
+[node name="soundEffectVolume" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 268.0
+margin_right = 131.0
+margin_bottom = 302.0
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/soundEffectVolume"]
+margin_right = 131.0
+margin_bottom = 14.0
+text = "Sound Effect Volume"
+
+[node name="HSlider" type="HSlider" parent="Panel/ScrollContainer/VBoxContainer/soundEffectVolume"]
+margin_top = 18.0
+margin_right = 131.0
+margin_bottom = 34.0
+value = 50.0
+
+[node name="SaveSettings" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 306.0
+margin_right = 131.0
+margin_bottom = 326.0
 text = "Save Settings"
 
 [node name="LoadSettings" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 216.0
-margin_right = 97.0
-margin_bottom = 236.0
+margin_top = 330.0
+margin_right = 131.0
+margin_bottom = 350.0
 text = "Load Settings"
 
 [node name="Play" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 240.0
-margin_right = 97.0
-margin_bottom = 260.0
+margin_top = 354.0
+margin_right = 131.0
+margin_bottom = 374.0
 text = "Play"
 
 [node name="QuitGame" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 264.0
-margin_right = 97.0
-margin_bottom = 284.0
+margin_top = 378.0
+margin_right = 131.0
+margin_bottom = 398.0
 text = "Quit Game"
 [connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/HBoxCont_UP/Button" to="." method="b_change_key_UP"]
 [connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/HBoxCont_DOWN/Button" to="." method="b_change_key_DOWN"]
@@ -190,7 +241,10 @@ text = "Quit Game"
 [connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/HBoxCont_FIRSTABILITY/Button" to="." method="b_change_key_FIRSTABILITY"]
 [connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/HBoxCont_BACK/Button" to="." method="b_change_key_BACK"]
 [connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/Fullscreen" to="." method="fullscreenToggle"]
+[connection signal="value_changed" from="Panel/ScrollContainer/VBoxContainer/mainVolume/HSlider" to="." method="mainVolChanged"]
+[connection signal="value_changed" from="Panel/ScrollContainer/VBoxContainer/musicVolume/HSlider" to="." method="musicVolChanged"]
+[connection signal="value_changed" from="Panel/ScrollContainer/VBoxContainer/soundEffectVolume/HSlider" to="." method="soundEffectVolChanged"]
 [connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/SaveSettings" to="." method="saveSettings"]
 [connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/LoadSettings" to="." method="loadSettings"]
-[connection signal="button_down" from="Panel/ScrollContainer/VBoxContainer/Play" to="." method="_on_Button_button_down"]
+[connection signal="button_down" from="Panel/ScrollContainer/VBoxContainer/Play" to="." method="startGame"]
 [connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/QuitGame" to="." method="quitGame"]

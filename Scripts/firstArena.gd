@@ -34,7 +34,7 @@ func _process(delta):
 func _physics_process(delta):
 	if(Input.is_action_just_pressed("FIRSTABILITY")):
 		mousePos = get_global_mouse_position()
-		
+		# Check if the laser isn't recharging to see if the player can shoot or not
 		if (recharging == false):
 			#shoot a laser from mouse
 			var space_state = get_world_2d().direct_space_state
@@ -47,18 +47,17 @@ func _physics_process(delta):
 			if result.collider != null:
 				if not result.collider.get("health") == null:
 					result.collider.health = result.collider.health - 10
-		#old bullet code
-		#var bulletNode
-		#bulletNode = bulletScene.instance()
-		#bulletNode.position = get_node("Player").position
-		#bulletNode.add_central_force(normalMouseVector * BULLETSPEED)
-		#add_child(bulletNode)
 
 func _draw():
+	# Check if the laser exists
 	if laserPos != null:
+		# If the laser exists, then draw it
 		draw_line(get_node("Player").position, laserPos, Color(255, 0, 0), 1)
-		if curLaserTime % MAXLASERTIME == MAXLASERTIME - 1:
+		# Check if the laser has displayed for too long, and should be removed
+		if curLaserTime == MAXLASERTIME:
+			# Remove the laser, and reset the curLaserTime variable back to 0
 			laserPos = null
 			curLaserTime = 0
-		else: 
+		else:
+			# If the laser isn't done displaying, add one more to curLaserTime
 			curLaserTime = curLaserTime + 1

@@ -20,6 +20,7 @@ func get_input():
 
 func _physics_process(delta):
 	get_input()
+	# Improve collisions with RigidBodies
 	velocity = move_and_slide(velocity, Vector2( 0, 0 ), false, 4, PI/4, false)
 	for index in get_slide_count():
 		var collision = get_slide_collision(index)
