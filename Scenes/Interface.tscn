@@ -10,16 +10,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="healthbar" type="Label" parent="."]
-margin_left = 76.0
-margin_top = 60.0
-margin_right = 116.0
-margin_bottom = 74.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+[node name="UICont" type="VBoxContainer" parent="."]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 104.0
+margin_bottom = 104.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="laserstatus" type="Label" parent="."]
-margin_left = 76.0
-margin_top = 76.0
-margin_right = 116.0
-margin_bottom = 90.0
+[node name="enemyhealth" type="Label" parent="UICont"]
+margin_right = 40.0
+margin_bottom = 14.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playerhealth" type="Label" parent="UICont"]
+margin_top = 18.0
+margin_right = 40.0
+margin_bottom = 32.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

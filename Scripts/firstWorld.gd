@@ -21,15 +21,22 @@ func _ready():
 func _process(delta):
 	# Go back to the main menu if the player presses the "BACK" key
 	if Input.is_action_just_pressed("BACK"):
-		get_tree().change_scene("res://Scenes/mainscene.tscn")
+		loadLevel(mainMenuScene)
 
-# TODO: Create a function for changing the level/arena
 func loadLevel(newLevelScene):
 	# Delete the level node
 	curLevel.queue_free()
+	# Wait until the next frame so that the level can be completely removed
+	yield(get_tree(), "idle_frame")
 	# Replace the old level node with the new one
 	curLevel = newLevelScene.instance()
 	add_child(curLevel)
+	#Update the Gui to account for enemies in new level
+	get_node("CanvasLayer/Interface").enemyHealthChanged()
+	get_node("CanvasLayer/Interface").playerHealthChanged()
+	
+	# REMOVED LASER CODE:
+	#get_node("CanvasLayer/Interface").laserStatusChanged()
 
 func percentToDb(value):
-	return value - 80
+	return (value * 104/100) - 80
