@@ -1,6 +1,6 @@
-# testgame
+# Project: HS
 This is a github repository for a game that's currently under development. 
-Until an official name for this game is decided upon, it will be called "testgame".
+Until an official name for this game is decided upon, it will be called "Project: HS".
 
 ## setup
 
