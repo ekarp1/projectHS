@@ -2,19 +2,41 @@
 This is a github repository for a game that's currently under development. 
 Until an official name for this game is decided upon, it will be called "Project: HS".
 
-## setup
+## Setup
 
 If you would like to play it for yourself, here are instructions for starting the game from one of the release builds:
 
-1. Download the appropriate binary for your operating system, and the pck file.
-If you don't know which binary to download, just download the file with the extension which is listed by your operating system below:
-- Windows: exe
-- GNU/Linux: x86_64
-- MacOS: zip
+### On Windows
 
-2. Make sure the binary file and the pck file that you downloaded are located in the same folder or directory.
+1. Download the files ending in ".exe" and ".pck" from the release build you want to install.
 
-**Note:** Although it is not required, I recommend that you create a new folder or directory specifically for the game's 
+2. Make sure the ".exe" file and the ".pck" file that you downloaded are located in the same folder.
+
+**Note:** Although it is not required, I recommend that you create a new folder specifically for the game's 
 files. This is because the game will create save files and configuration files that could cause some clutter. 
 
-3. Run it!
+3. Run the ".exe" file.
+
+### On MacOS
+
+**Note:** The game hasn't been tested on MacOS yet
+
+1. Download the file ending in ".zip" from the release build you want to install
+
+2. Double click on the ".zip" file in order to unarchive it. This should create a new file in the same folder.
+
+3. Run the new file that was created in the previous step.
+
+### On GNU/Linux
+
+1. Download the files ending in ".x86_64" and ".pck" from the release build you want to install.
+
+2. Make sure the ".x86_64" file and the ".pck" file that you downloaded are located in the same directory.
+
+**Note:** Although it is not required, I recommend that you create a new directory specifically for the game's 
+files. This is because the game will create save files and configuration files that could cause some clutter. 
+
+3. Mark the ".x86_64" file as an executable using the following command (replace "filename" with the file's name):
+chmod +x filename.x86_64
+
+4. Run the ".x86_64" file.
