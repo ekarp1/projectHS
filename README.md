@@ -37,6 +37,9 @@ files. This is because the game will create save files and configuration files t
 files. This is because the game will create save files and configuration files that could cause some clutter. 
 
 3. Mark the ".x86_64" file as an executable using the following command (replace "filename" with the file's name):
+
+```
 chmod +x filename.x86_64
+```
 
 4. Run the ".x86_64" file.
