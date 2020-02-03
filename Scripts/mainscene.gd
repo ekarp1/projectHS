@@ -2,7 +2,7 @@ extends Control
 
 var can_change_key = false
 var action_string
-enum ACTIONS {UP, DOWN, LEFT, RIGHT, INTERACT, FIRSTABILITY, BACK}
+enum ACTIONS {UP, DOWN, LEFT, RIGHT, INTERACT, FIRSTABILITY, SECONDABILITY, BACK}
 var fullscreen = false
 
 func _ready():
@@ -41,6 +41,9 @@ func b_change_key_INTERACT():
 
 func b_change_key_FIRSTABILITY():
 	_mark_button("FIRSTABILITY")
+
+func b_change_key_SECONDABILITY():
+	_mark_button("SECONDABILITY")
 
 func b_change_key_BACK():
 	_mark_button("BACK")
@@ -144,4 +147,3 @@ func fullscreenToggle():
 
 func quitGame():
 	 get_tree().quit()
-
