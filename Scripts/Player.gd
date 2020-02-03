@@ -35,5 +35,10 @@ func _physics_process(delta):
 #			collision.collider.apply_central_impulse(-collision.normal * inertia)
 
 func take_damage(amount):
-	health -= amount
-	get_node("/root/World/CanvasLayer/Interface").playerHealthChanged()
+	if(health - amount > 0):
+		health -= amount
+		get_node("/root/World/CanvasLayer/Interface").playerHealthChanged()
+	else:
+		health = MAXHEALTH
+		get_node("/root/World/PlayerDeath").play()
+		get_node("/root/World").loadLevel(get_node("/root/World").firstLevelScene)

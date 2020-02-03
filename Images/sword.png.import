@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/textbox.png-74cb7d25777bddc08cc5fdbe1c464259.stex"
+path="res://.import/sword.png-98d9554fd2b8fe95261dd499e183a11e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/textbox.png"
-dest_files=[ "res://.import/textbox.png-74cb7d25777bddc08cc5fdbe1c464259.stex" ]
+source_file="res://Images/sword.png"
+dest_files=[ "res://.import/sword.png-98d9554fd2b8fe95261dd499e183a11e.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

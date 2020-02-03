@@ -97,6 +97,7 @@ func soundEffectVolChanged(value):
 	# get_node("/root/World").soundEffectVol = get_node("/root/World").percentToDb(value)
 	# Change the death sound to the right volume
 	get_node("/root/World/EnemyDeath").volume_db = get_node("/root/World").percentToDb(value)
+	get_node("/root/World/PlayerDeath").volume_db = get_node("/root/World").percentToDb(value)
 
 # Volume and Sound Settings ^
 # -------------------------------------------------------------------------------------

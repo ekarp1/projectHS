@@ -2,14 +2,29 @@
 
 [ext_resource path="res://Scripts/firstArena.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Images/tempTexture.png" type="Texture" id=3]
+[ext_resource path="res://Images/tile.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=4]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 624, 32 )
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 32, 628 )
+[sub_resource type="TileSet" id=2]
+0/name = "tile.png 0"
+0/texture = ExtResource( 3 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 16, 16 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
 
 [node name="Arena" type="Node2D"]
 script = ExtResource( 1 )
@@ -17,46 +32,12 @@ script = ExtResource( 1 )
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 220, 196 )
 
-[node name="arenaTopWall" type="StaticBody2D" parent="."]
-position = Vector2( 688, 32 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="arenaTopWall"]
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="arenaTopWall"]
-scale = Vector2( 78, 4 )
-texture = ExtResource( 3 )
-
-[node name="arenaBotWall" type="StaticBody2D" parent="."]
-position = Vector2( 688, 1224 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="arenaBotWall"]
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="arenaBotWall"]
-scale = Vector2( 78, 4 )
-texture = ExtResource( 3 )
-
-[node name="arenaLeftWall" type="StaticBody2D" parent="."]
-position = Vector2( 32, 628 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="arenaLeftWall"]
-shape = SubResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="arenaLeftWall"]
-scale = Vector2( 4, 78.5 )
-texture = ExtResource( 3 )
-
-[node name="arenaRightWall" type="StaticBody2D" parent="."]
-position = Vector2( 1344, 628 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="arenaRightWall"]
-shape = SubResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="arenaRightWall"]
-scale = Vector2( 4, 78.5 )
-texture = ExtResource( 3 )
-
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
 position = Vector2( 628, 160 )
-continuous_cd = 2
+
+[node name="arenaWalls" type="TileMap" parent="."]
+scale = Vector2( 4, 4 )
+tile_set = SubResource( 2 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 65536, 0, 0, 65549, 0, 0, 131072, 0, 0, 131085, 0, 0, 196608, 0, 0, 196621, 0, 0, 262144, 0, 0, 262157, 0, 0, 327680, 0, 0, 327693, 0, 0, 393216, 0, 0, 393229, 0, 0, 458752, 0, 0, 458765, 0, 0, 524288, 0, 0, 524301, 0, 0, 589824, 0, 0, 589837, 0, 0, 655360, 0, 0, 655373, 0, 0, 720896, 0, 0, 720909, 0, 0, 786432, 0, 0, 786445, 0, 0, 851968, 0, 0, 851969, 0, 0, 851970, 0, 0, 851971, 0, 0, 851972, 0, 0, 851973, 0, 0, 851974, 0, 0, 851975, 0, 0, 851976, 0, 0, 851977, 0, 0, 851978, 0, 0, 851979, 0, 0, 851980, 0, 0, 851981, 0, 0 )

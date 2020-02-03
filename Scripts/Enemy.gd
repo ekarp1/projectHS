@@ -1,10 +1,15 @@
-extends RigidBody2D
+extends KinematicBody2D
 
 signal health_changed
 
 export var health = 100
 const MAXHEALTH = 100
-var waitToHeal = 0
+var velocity = Vector2()
+var moveTime = 2
+var changeDirTime = rand_range(0.1,1)
+var moveDirection = 0
+var speed = 275
+
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -24,3 +29,36 @@ func take_damage(amount):
 		# Leave the arena
 		get_node("/root/World").loadLevel(get_node("/root/World").firstLevelScene)
 
+func _physics_process(delta):
+	moveTime += delta
+	if (moveTime >= changeDirTime):
+		# Reset the move time
+		moveTime = 0
+		# Decide the angle to move in
+		var moveAngle = rand_range(0,2*PI)
+		# Convert that angle into a unit vector
+		moveDirection = Vector2(cos(moveAngle), sin(moveAngle))
+		# Randomize the time until changeing directions again
+		changeDirTime = rand_range(0.1,1)
+	# Reset the velocity
+	velocity = Vector2()
+	# Move in the move direction
+	velocity += moveDirection * speed
+	velocity = move_and_slide(velocity)
+
+#If the player enters the damage area, then deal damage to it
+#Othewise, move away from the thing that you touched
+func onTouched(body):
+	if(body == get_node("../Player")):
+		body.take_damage(10)
+		# Move in the opposite direction from the player
+		moveDirection = position.direction_to(body.position).rotated(PI)
+		# And also reset the moveTime and changeDirTime
+		moveTime = 0
+		changeDirTime = rand_range(0.1,1)
+	else:
+		# Rotate the direction of movement 180 degrees
+		moveDirection = moveDirection.rotated(PI)
+		# And also reset the moveTime and changeDirTime
+		moveTime = 0
+		changeDirTime = rand_range(0.1,0.2)

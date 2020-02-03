@@ -4,8 +4,11 @@ onready var swordScene = preload("res://Scenes/Sword.tscn")
 
 var curSword = null
 var curSwordSwungTimer = 0
+var swordWaitTime = 0
+var waiting = false
 const PLAYERWIDTH = 145
 const MAXSWORDSWINGTIME = 0.3
+const MAXSWORDWAITTIME = 0.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,7 +21,8 @@ func _physics_process(delta):
 	# Get a normalized vector of the mouse's position relative to the player
 	var normalMouseVector = (mousePos - get_node("Player").position).normalized()
 	var mouseAngle = normalMouseVector.angle() + PI/2
-	if (Input.is_action_just_pressed("FIRSTABILITY") and curSword == null):
+	
+	if (Input.is_action_just_pressed("FIRSTABILITY") and curSword == null and waiting == false):
 		# Add the sword to the scene
 		curSword = swordScene.instance()
 		# Set the sword's rotation
@@ -41,6 +45,15 @@ func _physics_process(delta):
 			curSword = null
 			# Then reset the timer
 			curSwordSwungTimer = 0
+			# And start waiting to swing again
+			waiting = true
+	elif(waiting == true):
+		# Add time to the wait timer
+		swordWaitTime += delta
+		# Check if it's time to stop waiting yet
+		if(swordWaitTime >= MAXSWORDWAITTIME):
+			waiting = false
+			swordWaitTime = 0
 
 
 
