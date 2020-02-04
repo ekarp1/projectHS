@@ -21,7 +21,11 @@ func _ready():
 func _process(delta):
 	# Go back to the main menu if the player presses the "BACK" key
 	if Input.is_action_just_pressed("BACK"):
-		loadLevel(mainMenuScene)
+		#If you're not already in the main menu, then go to the main menu, otherwise just leave the game entirely
+		if(curLevel.name != "mainMenu"):
+			loadLevel(mainMenuScene)
+		else:
+			get_tree().quit()
 
 func loadLevel(newLevelScene):
 	# Delete the level node

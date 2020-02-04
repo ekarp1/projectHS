@@ -146,4 +146,4 @@ func fullscreenToggle():
 	OS.window_fullscreen = fullscreen
 
 func quitGame():
-	 get_tree().quit()
+	get_tree().quit()
