@@ -17,7 +17,8 @@ var speed = 275
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	# Make the enemy's movement "truely" random
+	randomize()
 
 func take_damage(amount):
 	health -= amount
@@ -61,4 +62,4 @@ func onTouched(body):
 		moveDirection = moveDirection.rotated(PI)
 		# And also reset the moveTime and changeDirTime
 		moveTime = 0
-		changeDirTime = rand_range(0.1,0.2)
+		changeDirTime = 0.1

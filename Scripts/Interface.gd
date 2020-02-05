@@ -17,20 +17,27 @@ func enemyHealthChanged():
 	# TODO: Account for multiple enemies
 	# Check if the enemy exists
 	if has_node(ARENALOCATION + "/Enemy"):
+		get_node("UIContPan").visible = true
 		# Change the enemy health bar display to show the enemy's current health
-		get_node("UICont/enemyhealth").text = "Enemy Health: " + str(get_node(ARENALOCATION + "/Enemy").health) + " / " + str(get_node(ARENALOCATION + "/Enemy").MAXHEALTH)
+		get_node("UIContPan/UICont/enemyhealth").text = "Enemy Health: " + str(get_node(ARENALOCATION + "/Enemy").health) + " / " + str(get_node(ARENALOCATION + "/Enemy").MAXHEALTH)
 	else:
 		# Remove the enemy health bar if the enemy doesn't exist anymore
-		get_node("UICont/enemyhealth").text = ""
+		get_node("UIContPan/UICont/enemyhealth").text = ""
 
 func playerHealthChanged():
 	# Check if the player exists
 	if has_node(ARENALOCATION + "/Player"):
+		get_node("UIContPan").visible = true
 		# Change the player health bar display to show the player's current health
-		get_node("UICont/playerhealth").text = "Player Health: " + str(get_node(ARENALOCATION + "/Player").health) + " / " + str(get_node(ARENALOCATION + "/Player").MAXHEALTH)
+		get_node("UIContPan/UICont/playerhealth").text = "Player Health: " + str(get_node(ARENALOCATION + "/Player").health) + " / " + str(get_node(ARENALOCATION + "/Player").MAXHEALTH)
 	else:
 		# Remove the player health bar if the player doesn't exist anymore
-		get_node("UICont/playerhealth").text = ""
+		get_node("UIContPan/UICont/playerhealth").text = ""
+
+func clearInterface():
+	get_node("UIContPan").visible = false
+	get_node("UIContPan/UICont/enemyhealth").text = ""
+	get_node("UIContPan/UICont/playerhealth").text = ""
 
 ## Laser related code:
 #func laserStatusChanged():

@@ -10,16 +10,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="UICont" type="VBoxContainer" parent="."]
-margin_left = 64.0
+[node name="UIContPan" type="Panel" parent="."]
+visible = false
+margin_left = 104.0
 margin_top = 64.0
-margin_right = 104.0
+margin_right = 272.0
 margin_bottom = 104.0
+
+[node name="UICont" type="VBoxContainer" parent="UIContPan"]
+margin_right = 40.0
+margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="enemyhealth" type="Label" parent="UICont"]
+[node name="enemyhealth" type="Label" parent="UIContPan/UICont"]
 margin_right = 40.0
 margin_bottom = 14.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -27,7 +32,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="playerhealth" type="Label" parent="UICont"]
+[node name="playerhealth" type="Label" parent="UIContPan/UICont"]
 margin_top = 18.0
 margin_right = 40.0
 margin_bottom = 32.0

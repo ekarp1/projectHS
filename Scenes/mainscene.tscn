@@ -166,13 +166,13 @@ margin_bottom = 188.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_BACK"]
 margin_top = 3.0
-margin_right = 72.0
+margin_right = 73.0
 margin_bottom = 17.0
-text = "Back/Leave"
+text = "Back/Pause"
 
 [node name="Button" type="Button" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_BACK"]
-margin_left = 76.0
-margin_right = 88.0
+margin_left = 77.0
+margin_right = 89.0
 margin_bottom = 20.0
 focus_mode = 0
 toggle_mode = true
