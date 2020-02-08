@@ -124,5 +124,4 @@ func take_damage(amount):
 		get_node("/root/World").remTextBox()
 		get_node("/root/World").toggleTextBox("You died")
 		# Load the previous level
-		# TODO: Acccount for other levels
-		get_node("/root/World").loadLevel(get_node("/root/World").firstLevelScene)
+		get_node("/root/World").loadPrevLevel()

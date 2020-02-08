@@ -47,3 +47,10 @@ func getMinimap():
 	get_child(0).visible = true
 	add_child(minimapWalls)
 
+func remMinimap():
+	if(minimapWalls != null):
+		# Delete the minimapWalls node
+		minimapWalls.queue_free()
+		# Wait until the next frame so that the old minimapWalls can be completely removed
+		yield(get_tree(), "idle_frame")
+		minimapWalls = null

@@ -27,8 +27,8 @@ func take_damage(amount):
 	if (health <= 0):
 		# Play the death sound
 		get_node("/root/World/EnemyDeath").play()
-		# Leave the arena
-		get_node("/root/World").loadLevel(get_node("/root/World").firstLevelScene)
+		# Load the previous level
+		get_node("/root/World").loadPrevLevel()
 
 func _physics_process(delta):
 	moveTime += delta

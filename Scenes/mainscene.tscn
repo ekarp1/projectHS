@@ -198,7 +198,7 @@ text = "Main Volume"
 margin_top = 18.0
 margin_right = 131.0
 margin_bottom = 34.0
-value = 50.0
+value = 77.0
 
 [node name="musicVolume" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_top = 254.0

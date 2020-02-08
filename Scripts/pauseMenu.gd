@@ -17,7 +17,7 @@ func _ready():
 
 
 func toMainMenu():
-	get_node("/root/World").loadLevel(get_node("/root/World").mainMenuScene)
+	get_node("/root/World").loadMainMenu()
 
 
 func resumeGame():

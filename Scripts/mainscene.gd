@@ -4,6 +4,9 @@ var can_change_key = false
 var action_string
 enum ACTIONS {UP, DOWN, LEFT, RIGHT, INTERACT, FIRSTABILITY, SECONDABILITY, BACK}
 var fullscreen = false
+var mainVol = 77
+var musicVol = 67
+var soundEffectVol = 77
 
 func _ready():
 	_set_keys()  
@@ -86,17 +89,20 @@ func _change_key(new_key):
 # Volume and Sound Settings
 
 func mainVolChanged(value):
+	mainVol = value
 	# Set the volume throughout the entire game
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), get_node("/root/World").percentToDb(value))
 
 
 func musicVolChanged(value):
+	musicVol = value
 	# get_node("/root/World").musicVol = get_node("/root/World").percentToDb(value)
 	# Change the music to the right volume
 	get_node("/root/World/Music").volume_db = get_node("/root/World").percentToDb(value)
 
 
 func soundEffectVolChanged(value):
+	soundEffectVol = value
 	# get_node("/root/World").soundEffectVol = get_node("/root/World").percentToDb(value)
 	# Change the death sound to the right volume
 	get_node("/root/World/EnemyDeath").volume_db = get_node("/root/World").percentToDb(value)
@@ -119,6 +125,10 @@ func saveSettings():
 	# Save the fullscreen state
 	config.set_value("Video", "Fullscreen", fullscreen)
 	config.save(save_path)
+	# Save the volume states
+	config.set_value("Volume", "Main", mainVol)
+	config.set_value("Volume", "Music", musicVol)
+	config.set_value("Volume", "SoundEffect", soundEffectVol)
 
 func loadSettings():
 	# Load all of the controls
@@ -133,13 +143,24 @@ func loadSettings():
 	# Load the fullscreen state
 	fullscreen = config.get_value("Video", "Fullscreen", fullscreen)
 	OS.window_fullscreen = fullscreen
+	
+	# Load the volume states
+	var newMainVol = config.get_value("Volume", "Main", mainVol)
+	get_node("Panel/ScrollContainer/VBoxContainer/mainVolume/HSlider").value = newMainVol
+	mainVolChanged(newMainVol)
+	var newMusicVol = config.get_value("Volume", "Music", musicVol)
+	get_node("Panel/ScrollContainer/VBoxContainer/musicVolume/HSlider").value = newMusicVol
+	musicVolChanged(newMusicVol)
+	var newSoundEffectVol = config.get_value("Volume", "SoundEffect", soundEffectVol)
+	get_node("Panel/ScrollContainer/VBoxContainer/soundEffectVolume/HSlider").value = newSoundEffectVol
+	soundEffectVolChanged(newSoundEffectVol)
 
 # Load and save settings ^
 # -------------------------------------------------------------------------------------
 
 func startGame():
 	# Load the starting level
-	get_node("/root/World").loadLevel(get_node("/root/World").firstLevelScene)
+	get_node("/root/World").loadLevel(0, 0, 0)
 
 func fullscreenToggle():
 	fullscreen = !OS.window_fullscreen
