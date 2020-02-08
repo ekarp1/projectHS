@@ -20,6 +20,7 @@ var swordOnCooldown = false
 const MAXSWORDSWINGTIME = 0.3
 const SWORDCOOLDOWNTIME = 0.5
 var mousePos = Vector2(0,0)
+var normalMouseVector = Vector2(0,0)
 
 # Dash Variables
 const DASHSPEED = 500
@@ -28,6 +29,31 @@ const DASHCOOLDOWNTIME = 5
 var dashing = false
 var dashCooldown = DASHCOOLDOWNTIME
 var dashingTime = 0
+
+# Item Variables
+# Variable for storing the total cooldown time
+var firstItemCooldownTime = 2
+# Variable for storing the time left in the cooldown
+var firstItemCooldown = firstItemCooldownTime
+# Variable for storing the total cooldown time
+var secondItemCooldownTime = 2
+# Variable for storing the time left in the cooldown
+var secondItemCooldown = secondItemCooldownTime
+# Variable for storing the total cooldown time
+var thirdItemCooldownTime = 2
+# Variable for storing the time left in the cooldown
+var thirdItemCooldown = thirdItemCooldownTime
+
+# Bomb Variables
+onready var bombScene = preload("res://Scenes/Bomb.tscn")
+# Wave Variables
+onready var waveScene = preload("res://Scenes/Wave.tscn")
+# Laser Variables
+var laserPos = null
+var curLaserTime = 0
+const MAXLASERTIME = 10
+const LASERDAMAGE = 5
+
 
 # Player variables
 const PLAYERWIDTH = 145
@@ -52,14 +78,20 @@ func get_input():
 		velocity = velocity.normalized() * DASHSPEED
 
 func _physics_process(delta):
+	
 	get_input()
 	# Move the player
 	velocity = move_and_slide(velocity, Vector2( 0, 0 ), false, 4, PI/4, false)
+	for index in get_slide_count():
+		var collision = get_slide_collision(index)
+		if collision.collider is RigidBody2D:
+			collision.collider.apply_central_impulse(-collision.normal * inertia)
 	
 	mousePos = get_global_mouse_position()
 	# Get a normalized vector of the mouse's position relative to the player
-	var normalMouseVector = (mousePos - position).normalized()
-	
+	normalMouseVector = (mousePos - position).normalized()
+	# -----------------------------------------------------------------------------------------
+	# Ability code
 	if canUseAbilities:
 		var mouseAngle = normalMouseVector.angle() - PI/2
 		# -------------------------------------------------------------------------------------
@@ -99,11 +131,14 @@ func _physics_process(delta):
 		# Sword Code ^
 		# -------------------------------------------------------------------------------------
 		
+		# -------------------------------------------------------------------------------------
 		# Dash ability code
 		if (Input.is_action_just_pressed("SECONDABILITY") and dashing == false and dashCooldown >= DASHCOOLDOWNTIME):
+			# Start dashing
 			dashing = true
 			dashCooldown = 0
 		elif (dashing == false and dashCooldown < DASHCOOLDOWNTIME):
+			# Wait until you can dash again
 			dashCooldown += delta
 		elif (dashing == true):
 			dashingTime += delta
@@ -111,6 +146,48 @@ func _physics_process(delta):
 			if (dashingTime >= DASHTIME):
 				dashing = false
 				dashingTime = 0
+		# Dash ability code ^
+		# -------------------------------------------------------------------------------------
+		
+		# Items code
+		
+		if laserPos != null:
+			if curLaserTime >= MAXLASERTIME:
+				laserPos = null
+				curLaserTime = 0
+			else: 
+				curLaserTime = curLaserTime + 1
+		update()
+		
+		# FIRST ITEM WILL BE A BOMB
+		if (Input.is_action_just_pressed("FIRSTITEM") and firstItemCooldown >= firstItemCooldownTime):
+			# Execute the function for the first item
+			useBomb()
+			# Reset the cooldown
+			firstItemCooldown = 0
+		elif (firstItemCooldown < firstItemCooldownTime):
+			# Wait until you can use the first item again
+			firstItemCooldown += delta
+		# SECOND ITEM WILL BE A LASER
+		if (Input.is_action_just_pressed("SECONDITEM") and secondItemCooldown >= secondItemCooldownTime):
+			# Execute the function for the second item
+			useLaser()
+			# Reset the cooldown
+			secondItemCooldown = 0
+		elif (secondItemCooldown < secondItemCooldownTime):
+			# Wait until you can use the second item again
+			secondItemCooldown += delta
+		# THIRD ITEM WILL BE A WAVE
+		if (Input.is_action_just_pressed("THIRDITEM") and thirdItemCooldown >= thirdItemCooldownTime):
+			# Execute the function for the third item
+			useWave()
+			# Reset the cooldown
+			thirdItemCooldown = 0
+		elif (thirdItemCooldown < thirdItemCooldownTime):
+			# Wait until you can use the third item again
+			thirdItemCooldown += delta
+	# Ability code ^
+	# -----------------------------------------------------------------------------------------
 
 func take_damage(amount):
 	if(health - amount > 0):
@@ -125,3 +202,50 @@ func take_damage(amount):
 		get_node("/root/World").toggleTextBox("You died")
 		# Load the previous level
 		get_node("/root/World").loadPrevLevel()
+
+# ---------------------------------------------------------------------------------------------
+# ITEM FUNCTIONS
+
+# BOMB FUNCTION
+func useBomb():
+	# Add the bomb to the scene
+	var curBomb = bombScene.instance()
+	# Move the sword to where the player is
+	curBomb.position = mousePos
+	# Set the sword to be a child of the arena
+	get_parent().add_child(curBomb)
+# LASER FUNCTION
+func useLaser():
+	#shoot a laser from mouse
+	var space_state = get_world_2d().direct_space_state
+	# use global coordinates, not local to node
+	var result = space_state.intersect_ray(position, normalMouseVector * 4096 + position, [self])
+	# Draw the laser somehow
+	laserPos = result.position
+	update()
+	if result.collider != null:
+		# Check if the body has a method called "take_damage"
+		if result.collider.has_method("take_damage"):
+			# Take damage from the sword
+			result.collider.take_damage(LASERDAMAGE)
+# WAVE FUNCTION
+func useWave():
+	# Add the wave to the scene
+	var curWave = waveScene.instance()
+	# Set the wave 's rotation
+	var mouseAngle = normalMouseVector.angle() - PI/2
+	curWave.set_rotation(mouseAngle + PI)
+	# Move the wave to where the player is
+	curWave.position = position
+	# Change the wave's direction
+	curWave.direction = normalMouseVector * 10
+	# Set the wave to be a child of the arena
+	get_parent().add_child(curWave)
+
+# ITEM FUNCTIONS ^
+# ---------------------------------------------------------------------------------------------
+
+
+func _draw():
+	if laserPos != null:
+		draw_line(Vector2(0,0), laserPos - position, Color(255, 0, 0), 1)

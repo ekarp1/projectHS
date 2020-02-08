@@ -2,7 +2,7 @@ extends Control
 
 var can_change_key = false
 var action_string
-enum ACTIONS {UP, DOWN, LEFT, RIGHT, INTERACT, FIRSTABILITY, SECONDABILITY, BACK}
+enum ACTIONS {UP, DOWN, LEFT, RIGHT, INTERACT, FIRSTABILITY, SECONDABILITY, FIRSTITEM, SECONDITEM, THIRDITEM, BACK}
 var fullscreen = false
 var mainVol = 77
 var musicVol = 67
@@ -47,6 +47,15 @@ func b_change_key_FIRSTABILITY():
 
 func b_change_key_SECONDABILITY():
 	_mark_button("SECONDABILITY")
+
+func b_change_key_FIRSTITEM():
+	_mark_button("FIRSTITEM")
+
+func b_change_key_SECONDITEM():
+	_mark_button("SECONDITEM")
+
+func b_change_key_THIRDITEM():
+	_mark_button("THIRDITEM")
 
 func b_change_key_BACK():
 	_mark_button("BACK")
