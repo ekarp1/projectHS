@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/mainscene.gd" type="Script" id=1]
+
+[sub_resource type="DynamicFontData" id=1]
+antialiased = false
+hinting = 0
+font_path = "res://Fonts/Pixeltype.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+font_data = SubResource( 1 )
 
 [node name="mainMenu" type="Control"]
 anchor_right = 1.0
@@ -11,306 +19,353 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="."]
-margin_right = 1280.0
-margin_bottom = 720.0
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
-margin_left = 64.0
-margin_top = 64.0
-margin_right = 1216.0
-margin_bottom = 640.0
+margin_right = 320.0
+margin_bottom = 180.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
-margin_right = 131.0
-margin_bottom = 494.0
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 304.0
+margin_bottom = 168.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="GridContainer" parent="Panel/ScrollContainer"]
+margin_right = 262.0
+margin_bottom = 150.0
+columns = 3
 
 [node name="HBoxCont_UP" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_right = 131.0
-margin_bottom = 20.0
+margin_right = 78.0
+margin_bottom = 16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_UP"]
 margin_top = 3.0
-margin_right = 18.0
-margin_bottom = 17.0
+margin_right = 12.0
+margin_bottom = 13.0
+custom_fonts/font = SubResource( 2 )
 text = "Up"
 
 [node name="Button" type="Button" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_UP"]
-margin_left = 22.0
-margin_right = 34.0
-margin_bottom = 20.0
+margin_left = 16.0
+margin_right = 28.0
+margin_bottom = 16.0
 focus_mode = 0
+custom_fonts/font = SubResource( 2 )
 toggle_mode = true
 enabled_focus_mode = 0
 
 [node name="HBoxCont_DOWN" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 24.0
-margin_right = 131.0
-margin_bottom = 44.0
+margin_left = 82.0
+margin_right = 160.0
+margin_bottom = 16.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_DOWN"]
 margin_top = 3.0
-margin_right = 36.0
-margin_bottom = 17.0
+margin_right = 24.0
+margin_bottom = 13.0
+custom_fonts/font = SubResource( 2 )
 text = "Down"
 
 [node name="Button" type="Button" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_DOWN"]
-margin_left = 40.0
-margin_right = 52.0
-margin_bottom = 20.0
+margin_left = 28.0
+margin_right = 40.0
+margin_bottom = 16.0
 focus_mode = 0
+custom_fonts/font = SubResource( 2 )
 toggle_mode = true
 enabled_focus_mode = 0
 
 [node name="HBoxCont_LEFT" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 48.0
-margin_right = 131.0
-margin_bottom = 68.0
+margin_left = 164.0
+margin_right = 262.0
+margin_bottom = 16.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_LEFT"]
 margin_top = 3.0
-margin_right = 24.0
-margin_bottom = 17.0
+margin_right = 21.0
+margin_bottom = 13.0
+custom_fonts/font = SubResource( 2 )
 text = "Left"
 
 [node name="Button" type="Button" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_LEFT"]
-margin_left = 28.0
-margin_right = 40.0
-margin_bottom = 20.0
+margin_left = 25.0
+margin_right = 37.0
+margin_bottom = 16.0
 focus_mode = 0
+custom_fonts/font = SubResource( 2 )
 toggle_mode = true
 enabled_focus_mode = 0
 
 [node name="HBoxCont_RIGHT" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 72.0
-margin_right = 131.0
-margin_bottom = 92.0
+margin_top = 20.0
+margin_right = 78.0
+margin_bottom = 36.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_RIGHT"]
 margin_top = 3.0
-margin_right = 32.0
-margin_bottom = 17.0
+margin_right = 24.0
+margin_bottom = 13.0
+custom_fonts/font = SubResource( 2 )
 text = "Right"
 
 [node name="Button" type="Button" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_RIGHT"]
-margin_left = 36.0
-margin_right = 48.0
-margin_bottom = 20.0
+margin_left = 28.0
+margin_right = 40.0
+margin_bottom = 16.0
 focus_mode = 0
+custom_fonts/font = SubResource( 2 )
 toggle_mode = true
 enabled_focus_mode = 0
 
 [node name="HBoxCont_INTERACT" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 96.0
-margin_right = 131.0
-margin_bottom = 116.0
+margin_left = 82.0
+margin_top = 20.0
+margin_right = 160.0
+margin_bottom = 36.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_INTERACT"]
 margin_top = 3.0
-margin_right = 50.0
-margin_bottom = 17.0
+margin_right = 42.0
+margin_bottom = 13.0
+custom_fonts/font = SubResource( 2 )
 text = "Interact"
 
 [node name="Button" type="Button" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_INTERACT"]
-margin_left = 54.0
-margin_right = 66.0
-margin_bottom = 20.0
+margin_left = 46.0
+margin_right = 58.0
+margin_bottom = 16.0
 focus_mode = 0
+custom_fonts/font = SubResource( 2 )
 toggle_mode = true
 enabled_focus_mode = 0
 
 [node name="HBoxCont_FIRSTABILITY" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 120.0
-margin_right = 131.0
-margin_bottom = 140.0
+margin_left = 164.0
+margin_top = 20.0
+margin_right = 262.0
+margin_bottom = 36.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_FIRSTABILITY"]
 margin_top = 3.0
-margin_right = 83.0
-margin_bottom = 17.0
+margin_right = 60.0
+margin_bottom = 13.0
+custom_fonts/font = SubResource( 2 )
 text = "Sword Ability"
 
 [node name="Button" type="Button" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_FIRSTABILITY"]
-margin_left = 87.0
-margin_right = 99.0
-margin_bottom = 20.0
+margin_left = 64.0
+margin_right = 76.0
+margin_bottom = 16.0
 focus_mode = 0
+custom_fonts/font = SubResource( 2 )
 toggle_mode = true
 enabled_focus_mode = 0
 
 [node name="HBoxCont_SECONDABILITY" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 144.0
-margin_right = 131.0
-margin_bottom = 164.0
+margin_top = 40.0
+margin_right = 78.0
+margin_bottom = 56.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_SECONDABILITY"]
 margin_top = 3.0
-margin_right = 77.0
-margin_bottom = 17.0
+margin_right = 54.0
+margin_bottom = 13.0
+custom_fonts/font = SubResource( 2 )
 text = "Dash Ability"
 
 [node name="Button" type="Button" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_SECONDABILITY"]
-margin_left = 81.0
-margin_right = 93.0
-margin_bottom = 20.0
+margin_left = 58.0
+margin_right = 70.0
+margin_bottom = 16.0
 focus_mode = 0
+custom_fonts/font = SubResource( 2 )
 toggle_mode = true
 enabled_focus_mode = 0
 
 [node name="HBoxCont_FIRSTITEM" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 168.0
-margin_right = 131.0
-margin_bottom = 188.0
+margin_left = 82.0
+margin_top = 40.0
+margin_right = 160.0
+margin_bottom = 56.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_FIRSTITEM"]
 margin_top = 3.0
-margin_right = 63.0
-margin_bottom = 17.0
+margin_right = 46.0
+margin_bottom = 13.0
+custom_fonts/font = SubResource( 2 )
 text = "First Item"
 
 [node name="Button" type="Button" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_FIRSTITEM"]
-margin_left = 67.0
-margin_right = 79.0
-margin_bottom = 20.0
+margin_left = 50.0
+margin_right = 62.0
+margin_bottom = 16.0
 focus_mode = 0
+custom_fonts/font = SubResource( 2 )
 toggle_mode = true
 enabled_focus_mode = 0
 
 [node name="HBoxCont_SECONDITEM" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 192.0
-margin_right = 131.0
-margin_bottom = 212.0
+margin_left = 164.0
+margin_top = 40.0
+margin_right = 262.0
+margin_bottom = 56.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_SECONDITEM"]
 margin_top = 3.0
-margin_right = 81.0
-margin_bottom = 17.0
+margin_right = 58.0
+margin_bottom = 13.0
+custom_fonts/font = SubResource( 2 )
 text = "Second Item"
 
 [node name="Button" type="Button" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_SECONDITEM"]
-margin_left = 85.0
-margin_right = 97.0
-margin_bottom = 20.0
+margin_left = 62.0
+margin_right = 74.0
+margin_bottom = 16.0
 focus_mode = 0
+custom_fonts/font = SubResource( 2 )
 toggle_mode = true
 enabled_focus_mode = 0
 
 [node name="HBoxCont_THIRDITEM" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 216.0
-margin_right = 131.0
-margin_bottom = 236.0
+margin_top = 60.0
+margin_right = 78.0
+margin_bottom = 76.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_THIRDITEM"]
 margin_top = 3.0
-margin_right = 67.0
-margin_bottom = 17.0
+margin_right = 48.0
+margin_bottom = 13.0
+custom_fonts/font = SubResource( 2 )
 text = "Third Item"
 
 [node name="Button" type="Button" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_THIRDITEM"]
-margin_left = 71.0
-margin_right = 83.0
-margin_bottom = 20.0
+margin_left = 52.0
+margin_right = 64.0
+margin_bottom = 16.0
 focus_mode = 0
+custom_fonts/font = SubResource( 2 )
 toggle_mode = true
 enabled_focus_mode = 0
 
 [node name="HBoxCont_BACK" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 240.0
-margin_right = 131.0
-margin_bottom = 260.0
+margin_left = 82.0
+margin_top = 60.0
+margin_right = 160.0
+margin_bottom = 76.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_BACK"]
 margin_top = 3.0
-margin_right = 73.0
-margin_bottom = 17.0
+margin_right = 59.0
+margin_bottom = 13.0
+custom_fonts/font = SubResource( 2 )
 text = "Back/Pause"
 
 [node name="Button" type="Button" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_BACK"]
-margin_left = 77.0
-margin_right = 89.0
-margin_bottom = 20.0
+margin_left = 63.0
+margin_right = 75.0
+margin_bottom = 16.0
 focus_mode = 0
+custom_fonts/font = SubResource( 2 )
 toggle_mode = true
 enabled_focus_mode = 0
 
 [node name="Fullscreen" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 264.0
-margin_right = 131.0
-margin_bottom = 284.0
+margin_left = 164.0
+margin_top = 60.0
+margin_right = 262.0
+margin_bottom = 76.0
+custom_fonts/font = SubResource( 2 )
 text = "Fullscreen"
 
 [node name="mainVolume" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 288.0
-margin_right = 131.0
-margin_bottom = 322.0
+margin_top = 80.0
+margin_right = 78.0
+margin_bottom = 110.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/mainVolume"]
-margin_right = 131.0
-margin_bottom = 14.0
+margin_right = 78.0
+margin_bottom = 10.0
+custom_fonts/font = SubResource( 2 )
 text = "Main Volume"
 
 [node name="HSlider" type="HSlider" parent="Panel/ScrollContainer/VBoxContainer/mainVolume"]
-margin_top = 18.0
-margin_right = 131.0
-margin_bottom = 34.0
+margin_top = 14.0
+margin_right = 78.0
+margin_bottom = 30.0
 value = 77.0
 
 [node name="musicVolume" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 326.0
-margin_right = 131.0
-margin_bottom = 360.0
+margin_left = 82.0
+margin_top = 80.0
+margin_right = 160.0
+margin_bottom = 110.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/musicVolume"]
-margin_right = 131.0
-margin_bottom = 14.0
+margin_right = 78.0
+margin_bottom = 10.0
+custom_fonts/font = SubResource( 2 )
 text = "Music Volume"
 
 [node name="HSlider" type="HSlider" parent="Panel/ScrollContainer/VBoxContainer/musicVolume"]
-margin_top = 18.0
-margin_right = 131.0
-margin_bottom = 34.0
+margin_top = 14.0
+margin_right = 78.0
+margin_bottom = 30.0
 value = 67.0
 
 [node name="soundEffectVolume" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 364.0
-margin_right = 131.0
-margin_bottom = 398.0
+margin_left = 164.0
+margin_top = 80.0
+margin_right = 262.0
+margin_bottom = 110.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/soundEffectVolume"]
-margin_right = 131.0
-margin_bottom = 14.0
+margin_right = 98.0
+margin_bottom = 10.0
+custom_fonts/font = SubResource( 2 )
 text = "Sound Effect Volume"
 
 [node name="HSlider" type="HSlider" parent="Panel/ScrollContainer/VBoxContainer/soundEffectVolume"]
-margin_top = 18.0
-margin_right = 131.0
-margin_bottom = 34.0
+margin_top = 14.0
+margin_right = 98.0
+margin_bottom = 30.0
 value = 77.0
 
 [node name="SaveSettings" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 402.0
-margin_right = 131.0
-margin_bottom = 422.0
+margin_top = 114.0
+margin_right = 78.0
+margin_bottom = 130.0
+custom_fonts/font = SubResource( 2 )
 text = "Save Settings"
 
 [node name="LoadSettings" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 426.0
-margin_right = 131.0
-margin_bottom = 446.0
+margin_left = 82.0
+margin_top = 114.0
+margin_right = 160.0
+margin_bottom = 130.0
+custom_fonts/font = SubResource( 2 )
 text = "Load Settings"
 
 [node name="Play" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 450.0
-margin_right = 131.0
-margin_bottom = 470.0
+margin_left = 164.0
+margin_top = 114.0
+margin_right = 262.0
+margin_bottom = 130.0
+custom_fonts/font = SubResource( 2 )
 text = "Play"
 
 [node name="QuitGame" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 474.0
-margin_right = 131.0
-margin_bottom = 494.0
+margin_top = 134.0
+margin_right = 78.0
+margin_bottom = 150.0
+custom_fonts/font = SubResource( 2 )
 text = "Quit Game"
 [connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/HBoxCont_UP/Button" to="." method="b_change_key_UP"]
 [connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/HBoxCont_DOWN/Button" to="." method="b_change_key_DOWN"]

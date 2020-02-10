@@ -8,7 +8,7 @@ var velocity = Vector2()
 var moveTime = 2
 var changeDirTime = rand_range(0.1,1)
 var moveDirection = 0
-var speed = 275
+var speed = 75
 
 
 # Declare member variables here. Examples:

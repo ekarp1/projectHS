@@ -10,13 +10,12 @@
 script = ExtResource( 4 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 220, 196 )
+position = Vector2( 64, 128 )
 
 [node name="Enemy" parent="." instance=ExtResource( 3 )]
-position = Vector2( 628, 160 )
+position = Vector2( 128, 64 )
 
 [node name="Floor" type="TileMap" parent="."]
-scale = Vector2( 4, 4 )
 z_index = -1
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )

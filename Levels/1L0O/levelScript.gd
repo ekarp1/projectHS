@@ -54,10 +54,10 @@ func leftObjRange(objType, objIndex):
 func getDoorEntPos(doorIndex):
 	match doors[doorIndex][1]:
 		DIRECTIONS.TOP:
-			return Vector2(get_node("DOR_" + doors[doorIndex][0]).position.x, get_node("DOR_" + doors[doorIndex][0]).position.y + PLAYERSIZE.y * 4)
+			return Vector2(get_node("DOR_" + doors[doorIndex][0]).position.x, get_node("DOR_" + doors[doorIndex][0]).position.y + PLAYERSIZE.y)
 		DIRECTIONS.BOT:
-			return Vector2(get_node("DOR_" + doors[doorIndex][0]).position.x, get_node("DOR_" + doors[doorIndex][0]).position.y - PLAYERSIZE.y * 4)
+			return Vector2(get_node("DOR_" + doors[doorIndex][0]).position.x, get_node("DOR_" + doors[doorIndex][0]).position.y - PLAYERSIZE.y)
 		DIRECTIONS.LEFT:
-			return Vector2(get_node("DOR_" + doors[doorIndex][0]).position.x - PLAYERSIZE.x * 4, get_node("DOR_" + doors[doorIndex][0]).position.y)
+			return Vector2(get_node("DOR_" + doors[doorIndex][0]).position.x - PLAYERSIZE.x, get_node("DOR_" + doors[doorIndex][0]).position.y)
 		DIRECTIONS.RIGHT:
-			return Vector2(get_node("DOR_" + doors[doorIndex][0]).position.x + PLAYERSIZE.x * 4, get_node("DOR_" + doors[doorIndex][0]).position.y)
+			return Vector2(get_node("DOR_" + doors[doorIndex][0]).position.x + PLAYERSIZE.x, get_node("DOR_" + doors[doorIndex][0]).position.y)

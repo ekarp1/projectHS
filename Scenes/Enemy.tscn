@@ -4,10 +4,10 @@
 [ext_resource path="res://Images/enemy.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 32 )
+extents = Vector2( 8, 8 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 33, 33 )
+extents = Vector2( 9, 9 )
 
 [node name="Enemy" type="KinematicBody2D"]
 scale = Vector2( 2, 2 )
@@ -19,7 +19,6 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="enemy" type="Sprite" parent="."]
-scale = Vector2( 4, 4 )
 texture = ExtResource( 2 )
 
 [node name="damageArea" type="Area2D" parent="."]

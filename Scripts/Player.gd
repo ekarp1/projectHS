@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
-export (int) var speed = 275
-export (int, 0, 275) var inertia = 100
+export (int) var speed = 75
+export (int, 0, 75) var inertia = 100
 
 # Set the player's max health
 const MAXHEALTH = 100
@@ -23,7 +23,7 @@ var mousePos = Vector2(0,0)
 var normalMouseVector = Vector2(0,0)
 
 # Dash Variables
-const DASHSPEED = 500
+const DASHSPEED = 125
 const DASHTIME = 2.5
 const DASHCOOLDOWNTIME = 5
 var dashing = false
@@ -56,20 +56,20 @@ const LASERDAMAGE = 5
 
 
 # Player variables
-const PLAYERWIDTH = 145
+const PLAYERWIDTH = 16
 
 var velocity = Vector2()
 
 
 func get_input():
 	velocity = Vector2()
-	if Input.is_action_pressed('RIGHT'):
+	if get_node("/root/World").isRightPressed():
 		velocity.x += 1
-	if Input.is_action_pressed('LEFT'):
+	if get_node("/root/World").isLeftPressed():
 		velocity.x -= 1
-	if Input.is_action_pressed('DOWN'):
+	if get_node("/root/World").isDownPressed():
 		velocity.y += 1
-	if Input.is_action_pressed('UP'):
+	if get_node("/root/World").isUpPressed():
 		velocity.y -= 1
 	# Change the speed depending on whether or not the character is dashing
 	if dashing == false:
@@ -96,13 +96,13 @@ func _physics_process(delta):
 		var mouseAngle = normalMouseVector.angle() - PI/2
 		# -------------------------------------------------------------------------------------
 		# Sword Code
-		if (Input.is_action_just_pressed("FIRSTABILITY") and curSword == null and swordOnCooldown == false):
+		if (get_node("/root/World").isFirstAbilityPressed() and curSword == null and swordOnCooldown == false):
 			# Add the sword to the scene
 			curSword = swordScene.instance()
 			# Set the sword's rotation
 			curSword.set_rotation(mouseAngle + PI)
 			# Move the sword to where the player is
-			curSword.position = Vector2(0, 1).rotated(mouseAngle) * PLAYERWIDTH/2
+			curSword.position = Vector2(0, 1).rotated(mouseAngle) * PLAYERWIDTH
 			# Set the sword to be a child of the arena
 			add_child(curSword)
 		elif (curSword != null):
@@ -110,7 +110,7 @@ func _physics_process(delta):
 				# Set the sword's rotation
 				curSword.set_rotation(mouseAngle + PI)
 				# Move the sword to where the player is
-				curSword.position = Vector2(0, 1).rotated(mouseAngle) * PLAYERWIDTH/2
+				curSword.position = Vector2(0, 1).rotated(mouseAngle) * PLAYERWIDTH
 				# Add time to the timer for the time the sword was swung
 				curSwordSwungTimer += delta
 			else:
@@ -133,7 +133,7 @@ func _physics_process(delta):
 		
 		# -------------------------------------------------------------------------------------
 		# Dash ability code
-		if (Input.is_action_just_pressed("SECONDABILITY") and dashing == false and dashCooldown >= DASHCOOLDOWNTIME):
+		if (get_node("/root/World").isSecondAbilityPressed() and dashing == false and dashCooldown >= DASHCOOLDOWNTIME):
 			# Start dashing
 			dashing = true
 			dashCooldown = 0
@@ -160,7 +160,7 @@ func _physics_process(delta):
 		update()
 		
 		# FIRST ITEM WILL BE A BOMB
-		if (Input.is_action_just_pressed("FIRSTITEM") and firstItemCooldown >= firstItemCooldownTime):
+		if (get_node("/root/World").isFirstItemPressed() and firstItemCooldown >= firstItemCooldownTime):
 			# Execute the function for the first item
 			useBomb()
 			# Reset the cooldown
@@ -169,7 +169,7 @@ func _physics_process(delta):
 			# Wait until you can use the first item again
 			firstItemCooldown += delta
 		# SECOND ITEM WILL BE A LASER
-		if (Input.is_action_just_pressed("SECONDITEM") and secondItemCooldown >= secondItemCooldownTime):
+		if (get_node("/root/World").isSecondItemPressed() and secondItemCooldown >= secondItemCooldownTime):
 			# Execute the function for the second item
 			useLaser()
 			# Reset the cooldown
@@ -178,7 +178,7 @@ func _physics_process(delta):
 			# Wait until you can use the second item again
 			secondItemCooldown += delta
 		# THIRD ITEM WILL BE A WAVE
-		if (Input.is_action_just_pressed("THIRDITEM") and thirdItemCooldown >= thirdItemCooldownTime):
+		if (get_node("/root/World").isThirdItemPressed() and thirdItemCooldown >= thirdItemCooldownTime):
 			# Execute the function for the third item
 			useWave()
 			# Reset the cooldown
@@ -208,6 +208,9 @@ func take_damage(amount):
 
 # BOMB FUNCTION
 func useBomb():
+	# Wait until the player clicks
+	yield(get_node("/root/World"), "mousePress")
+	mousePos = get_global_mouse_position()
 	# Add the bomb to the scene
 	var curBomb = bombScene.instance()
 	# Move the sword to where the player is
@@ -216,6 +219,10 @@ func useBomb():
 	get_parent().add_child(curBomb)
 # LASER FUNCTION
 func useLaser():
+	# Wait until the player clicks
+	yield(get_node("/root/World"), "mousePress")
+	mousePos = get_global_mouse_position()
+	normalMouseVector = (mousePos - position).normalized()
 	#shoot a laser from mouse
 	var space_state = get_world_2d().direct_space_state
 	# use global coordinates, not local to node
@@ -230,6 +237,10 @@ func useLaser():
 			result.collider.take_damage(LASERDAMAGE)
 # WAVE FUNCTION
 func useWave():
+	# Wait until the player clicks
+	yield(get_node("/root/World"), "mousePress")
+	mousePos = get_global_mouse_position()
+	normalMouseVector = (mousePos - position).normalized()
 	# Add the wave to the scene
 	var curWave = waveScene.instance()
 	# Set the wave 's rotation

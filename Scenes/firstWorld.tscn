@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/firstWorld.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Interface.tscn" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Sound/WAVFXbug.wav" type="AudioStream" id=4]
 [ext_resource path="res://Sound/WAVFXdeath.wav" type="AudioStream" id=5]
 [ext_resource path="res://Scenes/Minimap.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Images/npc.png" type="Texture" id=7]
+[ext_resource path="res://Images/player.png" type="Texture" id=8]
 
 [node name="World" type="Node2D"]
 pause_mode = 2
@@ -17,6 +19,63 @@ script = ExtResource( 1 )
 
 [node name="Minimap" parent="CanvasLayer" instance=ExtResource( 6 )]
 
+[node name="touchInput" type="Node2D" parent="CanvasLayer"]
+
+[node name="touchUP" type="TouchScreenButton" parent="CanvasLayer/touchInput"]
+position = Vector2( 284, 144 )
+normal = ExtResource( 8 )
+pressed = ExtResource( 7 )
+
+[node name="touchDOWN" type="TouchScreenButton" parent="CanvasLayer/touchInput"]
+position = Vector2( 284, 160 )
+normal = ExtResource( 8 )
+pressed = ExtResource( 7 )
+
+[node name="touchLEFT" type="TouchScreenButton" parent="CanvasLayer/touchInput"]
+position = Vector2( 268, 160 )
+normal = ExtResource( 8 )
+pressed = ExtResource( 7 )
+
+[node name="touchRIGHT" type="TouchScreenButton" parent="CanvasLayer/touchInput"]
+position = Vector2( 300, 160 )
+normal = ExtResource( 8 )
+pressed = ExtResource( 7 )
+
+[node name="touchINTERACT" type="TouchScreenButton" parent="CanvasLayer/touchInput"]
+position = Vector2( 8, 156 )
+normal = ExtResource( 8 )
+pressed = ExtResource( 7 )
+
+[node name="touchFIRSTABILITY" type="TouchScreenButton" parent="CanvasLayer/touchInput"]
+position = Vector2( 276, 24 )
+normal = ExtResource( 8 )
+pressed = ExtResource( 7 )
+
+[node name="touchSECONDABILITY" type="TouchScreenButton" parent="CanvasLayer/touchInput"]
+position = Vector2( 292, 24 )
+normal = ExtResource( 8 )
+pressed = ExtResource( 7 )
+
+[node name="touchFIRSTITEM" type="TouchScreenButton" parent="CanvasLayer/touchInput"]
+position = Vector2( 260, 8 )
+normal = ExtResource( 8 )
+pressed = ExtResource( 7 )
+
+[node name="touchSECONDITEM" type="TouchScreenButton" parent="CanvasLayer/touchInput"]
+position = Vector2( 276, 8 )
+normal = ExtResource( 8 )
+pressed = ExtResource( 7 )
+
+[node name="touchTHIRDITEM" type="TouchScreenButton" parent="CanvasLayer/touchInput"]
+position = Vector2( 292, 8 )
+normal = ExtResource( 8 )
+pressed = ExtResource( 7 )
+
+[node name="touchBACK" type="TouchScreenButton" parent="CanvasLayer/touchInput"]
+position = Vector2( 8, 8 )
+normal = ExtResource( 8 )
+pressed = ExtResource( 7 )
+
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -10.0
@@ -27,3 +86,18 @@ stream = ExtResource( 4 )
 
 [node name="PlayerDeath" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+[connection signal="pressed" from="CanvasLayer/touchInput/touchUP" to="." method="touchUpPressed"]
+[connection signal="released" from="CanvasLayer/touchInput/touchUP" to="." method="touchUpReleased"]
+[connection signal="pressed" from="CanvasLayer/touchInput/touchDOWN" to="." method="touchDownPressed"]
+[connection signal="released" from="CanvasLayer/touchInput/touchDOWN" to="." method="touchDownReleased"]
+[connection signal="pressed" from="CanvasLayer/touchInput/touchLEFT" to="." method="touchLeftPressed"]
+[connection signal="released" from="CanvasLayer/touchInput/touchLEFT" to="." method="touchLeftReleased"]
+[connection signal="pressed" from="CanvasLayer/touchInput/touchRIGHT" to="." method="touchRightPressed"]
+[connection signal="released" from="CanvasLayer/touchInput/touchRIGHT" to="." method="touchRightReleased"]
+[connection signal="pressed" from="CanvasLayer/touchInput/touchINTERACT" to="." method="touchInteractPressed"]
+[connection signal="pressed" from="CanvasLayer/touchInput/touchFIRSTABILITY" to="." method="touchFirstAbilityPressed"]
+[connection signal="pressed" from="CanvasLayer/touchInput/touchSECONDABILITY" to="." method="touchSecondAbilityPressed"]
+[connection signal="pressed" from="CanvasLayer/touchInput/touchFIRSTITEM" to="." method="touchFirstItemPressed"]
+[connection signal="pressed" from="CanvasLayer/touchInput/touchSECONDITEM" to="." method="touchSecondItemPressed"]
+[connection signal="pressed" from="CanvasLayer/touchInput/touchTHIRDITEM" to="." method="touchThirdItemPressed"]
+[connection signal="pressed" from="CanvasLayer/touchInput/touchBACK" to="." method="touchBackPressed"]

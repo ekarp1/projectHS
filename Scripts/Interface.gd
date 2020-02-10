@@ -17,7 +17,7 @@ func enemyHealthChanged():
 	# TODO: Account for multiple enemies
 	# Check if the enemy exists
 	if has_node(ARENALOCATION + "/Enemy"):
-		get_node("UIContPan").visible = true
+		visible = true
 		# Change the enemy health bar display to show the enemy's current health
 		get_node("UIContPan/UICont/enemyhealth").text = "Enemy Health: " + str(get_node(ARENALOCATION + "/Enemy").health) + " / " + str(get_node(ARENALOCATION + "/Enemy").MAXHEALTH)
 	else:
@@ -27,7 +27,7 @@ func enemyHealthChanged():
 func playerHealthChanged():
 	# Check if the player exists
 	if has_node(ARENALOCATION + "/Player"):
-		get_node("UIContPan").visible = true
+		visible = true
 		# Change the player health bar display to show the player's current health
 		get_node("UIContPan/UICont/playerhealth").text = "Player Health: " + str(get_node(ARENALOCATION + "/Player").health) + " / " + str(get_node(ARENALOCATION + "/Player").MAXHEALTH)
 	else:
@@ -35,7 +35,7 @@ func playerHealthChanged():
 		get_node("UIContPan/UICont/playerhealth").text = ""
 
 func clearInterface():
-	get_node("UIContPan").visible = false
+	visible = false
 	get_node("UIContPan/UICont/enemyhealth").text = ""
 	get_node("UIContPan/UICont/playerhealth").text = ""
 

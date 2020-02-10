@@ -9,7 +9,12 @@ var musicVol = 67
 var soundEffectVol = 77
 
 func _ready():
-	_set_keys()  
+	_set_keys()
+	# Make the Control settings invisible if it's using touchscreen
+	#if (get_node("/root/World").ISTOUCH):
+	#	get_node("Panel/ScrollContainer/VBoxContainer/Controls").visible = false
+	#else:
+	#	get_node("Panel/ScrollContainer/VBoxContainer/Controls").visible = true
   
 func _set_keys():
 	for j in ACTIONS:
@@ -69,7 +74,7 @@ func _mark_button(string):
 	
 	for j in ACTIONS:
 		if j != string:
-			get_node("Panel/ScrollContainer/VBoxContainer/HBoxCont_" + str(j) + "/Button").set_pressed(false)
+			get_node("Panel/ScrollContainer/VBoxContainer/Controls/HBoxCont_" + str(j) + "/Button").set_pressed(false)
 
 func _input(event):
 	if event is InputEventKey or event is InputEventJoypadButton or (event is InputEventMouseButton and event.get_button_index() >= 1 and event.get_button_index() <= 3): 

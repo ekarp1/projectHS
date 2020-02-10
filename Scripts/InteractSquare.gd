@@ -24,7 +24,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if(inBody == true):
-		if Input.is_action_just_pressed("INTERACT"):
+		if get_node("/root/World").isInteractPressed():
 			# Tell the level that you were interacted with
 			get_node("../..").interactedWObj(objType, objIndex)
 

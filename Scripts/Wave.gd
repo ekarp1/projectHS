@@ -23,4 +23,4 @@ func _ready():
 func waveCollided(body):
 	if body.has_method("take_damage"):
 		body.take_damage(WAVEDAMAGE)
-	get_parent().remove_child(self)
+	self.queue_free()

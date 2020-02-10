@@ -4,10 +4,10 @@
 [ext_resource path="res://Scripts/InteractSquare.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 30 )
+extents = Vector2( 8, 8 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 80, 80 )
+extents = Vector2( 20, 20 )
 
 [node name="NPC" type="Node2D"]
 
@@ -17,7 +17,6 @@ extents = Vector2( 80, 80 )
 shape = SubResource( 1 )
 
 [node name="npc" type="Sprite" parent="Body"]
-scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 
 [node name="InteractSquare" type="Area2D" parent="."]

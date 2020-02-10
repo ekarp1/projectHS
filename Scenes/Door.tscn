@@ -4,10 +4,10 @@
 [ext_resource path="res://Images/basicDoor.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 12 )
+extents = Vector2( 8, 3 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 80, 80 )
+extents = Vector2( 20, 20 )
 
 [node name="DOR" type="Node2D"]
 position = Vector2( 576, 160 )
@@ -16,11 +16,10 @@ z_index = 2
 [node name="Body" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
-position = Vector2( 0, 16 )
+position = Vector2( 0, 4 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Body"]
-scale = Vector2( 4, 4 )
 texture = ExtResource( 2 )
 
 [node name="InteractSquare" type="Area2D" parent="."]

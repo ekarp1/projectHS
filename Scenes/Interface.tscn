@@ -1,41 +1,50 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/Interface.gd" type="Script" id=1]
 
+[sub_resource type="DynamicFontData" id=1]
+antialiased = false
+hinting = 0
+font_path = "res://Fonts/Pixeltype.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+font_data = SubResource( 1 )
+
 [node name="Interface" type="Control"]
-margin_right = 40.0
-margin_bottom = 40.0
+visible = false
+margin_right = 320.0
+margin_bottom = 180.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="UIContPan" type="Panel" parent="."]
-visible = false
-margin_left = 104.0
-margin_top = 64.0
-margin_right = 272.0
-margin_bottom = 104.0
+margin_right = 128.0
+margin_bottom = 32.0
 
 [node name="UICont" type="VBoxContainer" parent="UIContPan"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_top = 4.0
+margin_right = 128.0
+margin_bottom = 28.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="enemyhealth" type="Label" parent="UIContPan/UICont"]
-margin_right = 40.0
-margin_bottom = 14.0
+margin_right = 128.0
+margin_bottom = 10.0
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="playerhealth" type="Label" parent="UIContPan/UICont"]
-margin_top = 18.0
-margin_right = 40.0
-margin_bottom = 32.0
+margin_top = 14.0
+margin_right = 128.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
