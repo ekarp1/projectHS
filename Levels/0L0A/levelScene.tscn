@@ -16,7 +16,7 @@ position = Vector2( 64, 128 )
 position = Vector2( 128, 64 )
 
 [node name="Floor" type="TileMap" parent="."]
-z_index = -1
+z_index = -3
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1

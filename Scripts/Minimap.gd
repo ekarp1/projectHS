@@ -31,12 +31,16 @@ func _draw():
 		draw_rect(Rect2(miniMapRect.position.x + playerPos.x, miniMapRect.position.y + playerPos.y, 1, 1), Color(1, 0, 0))
 #
 func getMinimap():
-	var curWalls = get_node("/root/World").curLevel.get_node("Walls")
-	print(get_viewport().size.x - curWalls.get_used_rect().size.x)
+	var curWallsFront = get_node("/root/World").curLevel.get_node("Walls/Front")
+	var curWallsBack = get_node("/root/World").curLevel.get_node("Walls/Back")
+	var curWallsUsedRect = curWallsFront.get_used_rect().merge(curWallsBack.get_used_rect())
 	#get a rectangle for where the minimap will be
-	miniMapRect = Rect2(get_viewport().size.x - curWalls.get_used_rect().size.x, 0, 
-		curWalls.get_used_rect().size.x, curWalls.get_used_rect().size.y)
-	wallPosArray = curWalls.get_used_cells()
+	miniMapRect = Rect2(get_viewport().size.x - curWallsUsedRect.size.x, 0, 
+		curWallsUsedRect.size.x, curWallsUsedRect.size.y)
+	#Put the used cells into the wallPosArray
+	wallPosArray = curWallsFront.get_used_cells()
+	for usedCell in curWallsBack.get_used_cells():
+		wallPosArray.push_back(usedCell)
 #	if(minimapWalls != null):
 #		# Delete the minimapWalls node
 #		minimapWalls.queue_free()
@@ -51,7 +55,7 @@ func getMinimap():
 #	miniMapPos = Vector2(get_viewport().size.x - minimapWalls.get_used_rect().size.x * minimapWalls.get_cell_size().x, 0)
 #	minimapWalls.position = miniMapPos
 	get_child(0).set_position(miniMapRect.position)
-	get_child(0).set_size(Vector2(curWalls.get_used_rect().size.x, curWalls.get_used_rect().size.y))
+	get_child(0).set_size(Vector2(curWallsUsedRect.size.x, curWallsUsedRect.size.y))
 	get_child(0).visible = true
 #	add_child(minimapWalls)
 #

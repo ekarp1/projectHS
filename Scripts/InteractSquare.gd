@@ -27,6 +27,14 @@ func _process(delta):
 		if get_node("/root/World").isInteractPressed():
 			# Tell the level that you were interacted with
 			get_node("../..").interactedWObj(objType, objIndex)
+		#Only change the z index if it's an npc
+		if(objType == 0):
+			var playerVar = get_node("/root/World").curLevel.get_node("Player")
+			#Check if the player is above or bellow
+			if(playerVar.position.y < get_parent().position.y):
+				get_parent().set_z_index(1)
+			else:
+				get_parent().set_z_index(-1)
 
 func body_entered(body):
 	if( body == get_node("/root/World/Level/Player") ):

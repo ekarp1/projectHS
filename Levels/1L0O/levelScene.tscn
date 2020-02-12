@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Tilesets/Floor.tres" type="TileSet" id=1]
-[ext_resource path="res://Levels/1L0O/Walls.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Tilesets/Walls.tres" type="TileSet" id=2]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/1L0O/levelScript.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/NPC.tscn" type="PackedScene" id=5]
@@ -11,7 +11,7 @@
 script = ExtResource( 4 )
 
 [node name="Floor" type="TileMap" parent="."]
-z_index = -1
+z_index = -3
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
@@ -26,7 +26,22 @@ position = Vector2( 80, 128 )
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 128, 96 )
 
-[node name="Walls" parent="." instance=ExtResource( 2 )]
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Back" type="TileMap" parent="Walls"]
+z_index = -1
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 2, 536870914, 1, 3, 536870914, 0, 4, 536870914, 0, 5, 536870914, 0, 6, 2, 1, 65538, 2, 65537, 65542, 536870914, 65537, 65545, 536870914, 1, 65546, 536870914, 0, 65547, 536870914, 0, 65548, 2, 1, 131072, 536870914, 1, 131073, 536870914, 0, 131074, 536870913, 0, 131078, 1, 0, 131079, 536870914, 0, 131080, 536870914, 0, 131081, 536870913, 0, 131084, 536870914, 65537, 196608, 2, 65537, 196619, 536870912, 0, 196620, 1, 0, 196621, 2, 1, 262154, 536870912, 0, 262157, 536870914, 65537, 393219, 2, 65537, 393228, 536870914, 65537, 458755, 2, 65537, 458764, 536870914, 65537, 524290, 536870914, 1, 524291, 536870913, 0, 524300, 1, 0, 524301, 2, 1, 589826, 2, 65537, 589837, 536870914, 65537 )
+
+[node name="Front" type="TileMap" parent="Walls"]
+z_index = 1
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 196619, 536870912, 0, 262144, 2, 65536, 262145, 2, 2, 262146, 2, 65538, 262154, 536870912, 0, 327682, 2, 65536, 327683, 2, 65538, 327692, 536870914, 65538, 327693, 536870914, 65536, 589829, 536870914, 65538, 589830, 2, 2, 589831, 2, 65538, 655362, 2, 65536, 655363, 2, 65538, 655364, 536870914, 65538, 655365, 536870914, 65536, 655367, 2, 65536, 655368, 536870914, 2, 655369, 2, 65538, 655372, 536870914, 65538, 655373, 536870914, 65536, 720899, 2, 65536, 720900, 536870914, 65536, 720905, 2, 65536, 720906, 2, 2, 720907, 2, 2, 720908, 536870914, 65536 )
 
 [node name="DOR_ONE" parent="." instance=ExtResource( 6 )]
 position = Vector2( 128, 40 )
+z_index = -1

@@ -71,6 +71,12 @@ func get_input():
 		velocity.y += 1
 	if get_node("/root/World").isUpPressed():
 		velocity.y -= 1
+	if velocity.x != 0:
+		get_node("playerSide").visible = true
+		get_node("playerFront").visible = false
+	else:
+		get_node("playerSide").visible = false
+		get_node("playerFront").visible = true
 	# Change the speed depending on whether or not the character is dashing
 	if dashing == false:
 		velocity = velocity.normalized() * speed
