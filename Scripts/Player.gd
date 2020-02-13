@@ -214,8 +214,9 @@ func take_damage(amount):
 
 # BOMB FUNCTION
 func useBomb():
-	# Wait until the player clicks
-	yield(get_node("/root/World"), "mousePress")
+	# Wait until the player clicks if quick use is off
+	if !get_node("/root/World").quickUse:
+		yield(get_node("/root/World"), "mousePress")
 	mousePos = get_global_mouse_position()
 	# Add the bomb to the scene
 	var curBomb = bombScene.instance()
@@ -225,8 +226,9 @@ func useBomb():
 	get_parent().add_child(curBomb)
 # LASER FUNCTION
 func useLaser():
-	# Wait until the player clicks
-	yield(get_node("/root/World"), "mousePress")
+	# Wait until the player clicks if quick use is off
+	if !get_node("/root/World").quickUse:
+		yield(get_node("/root/World"), "mousePress")
 	mousePos = get_global_mouse_position()
 	normalMouseVector = (mousePos - position).normalized()
 	#shoot a laser from mouse
@@ -243,8 +245,9 @@ func useLaser():
 			result.collider.take_damage(LASERDAMAGE)
 # WAVE FUNCTION
 func useWave():
-	# Wait until the player clicks
-	yield(get_node("/root/World"), "mousePress")
+	# Wait until the player clicks if quick use is off
+	if !get_node("/root/World").quickUse:
+		yield(get_node("/root/World"), "mousePress")
 	mousePos = get_global_mouse_position()
 	normalMouseVector = (mousePos - position).normalized()
 	# Add the wave to the scene

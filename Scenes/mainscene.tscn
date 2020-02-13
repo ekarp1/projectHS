@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/mainscene.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/pixelFont.tres" type="DynamicFont" id=2]
 
 [sub_resource type="DynamicFontData" id=1]
 antialiased = false
@@ -36,12 +37,29 @@ __meta__ = {
 
 [node name="VBoxContainer" type="GridContainer" parent="Panel/ScrollContainer"]
 margin_right = 262.0
-margin_bottom = 150.0
+margin_bottom = 170.0
 columns = 3
 
-[node name="HBoxCont_UP" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
+[node name="Filler3" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_right = 78.0
 margin_bottom = 16.0
+
+[node name="Play" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_left = 82.0
+margin_right = 160.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 2 )
+text = "Play"
+
+[node name="Filler4" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_left = 164.0
+margin_right = 262.0
+margin_bottom = 16.0
+
+[node name="HBoxCont_UP" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 20.0
+margin_right = 78.0
+margin_bottom = 36.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -64,8 +82,9 @@ enabled_focus_mode = 0
 
 [node name="HBoxCont_DOWN" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_left = 82.0
+margin_top = 20.0
 margin_right = 160.0
-margin_bottom = 16.0
+margin_bottom = 36.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_DOWN"]
 margin_top = 3.0
@@ -85,8 +104,9 @@ enabled_focus_mode = 0
 
 [node name="HBoxCont_LEFT" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_left = 164.0
+margin_top = 20.0
 margin_right = 262.0
-margin_bottom = 16.0
+margin_bottom = 36.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_LEFT"]
 margin_top = 3.0
@@ -105,9 +125,9 @@ toggle_mode = true
 enabled_focus_mode = 0
 
 [node name="HBoxCont_RIGHT" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 20.0
+margin_top = 40.0
 margin_right = 78.0
-margin_bottom = 36.0
+margin_bottom = 56.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_RIGHT"]
 margin_top = 3.0
@@ -127,9 +147,9 @@ enabled_focus_mode = 0
 
 [node name="HBoxCont_INTERACT" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_left = 82.0
-margin_top = 20.0
+margin_top = 40.0
 margin_right = 160.0
-margin_bottom = 36.0
+margin_bottom = 56.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_INTERACT"]
 margin_top = 3.0
@@ -149,9 +169,9 @@ enabled_focus_mode = 0
 
 [node name="HBoxCont_FIRSTABILITY" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_left = 164.0
-margin_top = 20.0
+margin_top = 40.0
 margin_right = 262.0
-margin_bottom = 36.0
+margin_bottom = 56.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_FIRSTABILITY"]
 margin_top = 3.0
@@ -170,9 +190,9 @@ toggle_mode = true
 enabled_focus_mode = 0
 
 [node name="HBoxCont_SECONDABILITY" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 40.0
+margin_top = 60.0
 margin_right = 78.0
-margin_bottom = 56.0
+margin_bottom = 76.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_SECONDABILITY"]
 margin_top = 3.0
@@ -192,9 +212,9 @@ enabled_focus_mode = 0
 
 [node name="HBoxCont_FIRSTITEM" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_left = 82.0
-margin_top = 40.0
+margin_top = 60.0
 margin_right = 160.0
-margin_bottom = 56.0
+margin_bottom = 76.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_FIRSTITEM"]
 margin_top = 3.0
@@ -214,9 +234,9 @@ enabled_focus_mode = 0
 
 [node name="HBoxCont_SECONDITEM" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_left = 164.0
-margin_top = 40.0
+margin_top = 60.0
 margin_right = 262.0
-margin_bottom = 56.0
+margin_bottom = 76.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_SECONDITEM"]
 margin_top = 3.0
@@ -235,9 +255,9 @@ toggle_mode = true
 enabled_focus_mode = 0
 
 [node name="HBoxCont_THIRDITEM" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 60.0
+margin_top = 80.0
 margin_right = 78.0
-margin_bottom = 76.0
+margin_bottom = 96.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_THIRDITEM"]
 margin_top = 3.0
@@ -257,9 +277,9 @@ enabled_focus_mode = 0
 
 [node name="HBoxCont_BACK" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_left = 82.0
-margin_top = 60.0
+margin_top = 80.0
 margin_right = 160.0
-margin_bottom = 76.0
+margin_bottom = 96.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxCont_BACK"]
 margin_top = 3.0
@@ -277,18 +297,39 @@ custom_fonts/font = SubResource( 2 )
 toggle_mode = true
 enabled_focus_mode = 0
 
-[node name="Fullscreen" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
+[node name="Filler" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_left = 164.0
-margin_top = 60.0
+margin_top = 80.0
 margin_right = 262.0
-margin_bottom = 76.0
+margin_bottom = 96.0
+
+[node name="Fullscreen" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_top = 100.0
+margin_right = 78.0
+margin_bottom = 116.0
 custom_fonts/font = SubResource( 2 )
+toggle_mode = true
 text = "Fullscreen"
 
+[node name="QuickUse" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_left = 82.0
+margin_top = 100.0
+margin_right = 160.0
+margin_bottom = 116.0
+custom_fonts/font = ExtResource( 2 )
+toggle_mode = true
+text = "Quick Use"
+
+[node name="Filler2" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
+margin_left = 164.0
+margin_top = 100.0
+margin_right = 262.0
+margin_bottom = 116.0
+
 [node name="mainVolume" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 80.0
+margin_top = 120.0
 margin_right = 78.0
-margin_bottom = 110.0
+margin_bottom = 150.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/mainVolume"]
 margin_right = 78.0
@@ -304,9 +345,9 @@ value = 77.0
 
 [node name="musicVolume" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_left = 82.0
-margin_top = 80.0
+margin_top = 120.0
 margin_right = 160.0
-margin_bottom = 110.0
+margin_bottom = 150.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/musicVolume"]
 margin_right = 78.0
@@ -322,9 +363,9 @@ value = 67.0
 
 [node name="soundEffectVolume" type="VBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_left = 164.0
-margin_top = 80.0
+margin_top = 120.0
 margin_right = 262.0
-margin_bottom = 110.0
+margin_bottom = 150.0
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/soundEffectVolume"]
 margin_right = 98.0
@@ -339,34 +380,28 @@ margin_bottom = 30.0
 value = 77.0
 
 [node name="SaveSettings" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 114.0
+margin_top = 154.0
 margin_right = 78.0
-margin_bottom = 130.0
+margin_bottom = 170.0
 custom_fonts/font = SubResource( 2 )
 text = "Save Settings"
 
 [node name="LoadSettings" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
 margin_left = 82.0
-margin_top = 114.0
+margin_top = 154.0
 margin_right = 160.0
-margin_bottom = 130.0
+margin_bottom = 170.0
 custom_fonts/font = SubResource( 2 )
 text = "Load Settings"
 
-[node name="Play" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_left = 164.0
-margin_top = 114.0
-margin_right = 262.0
-margin_bottom = 130.0
-custom_fonts/font = SubResource( 2 )
-text = "Play"
-
 [node name="QuitGame" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 134.0
-margin_right = 78.0
-margin_bottom = 150.0
+margin_left = 164.0
+margin_top = 154.0
+margin_right = 262.0
+margin_bottom = 170.0
 custom_fonts/font = SubResource( 2 )
 text = "Quit Game"
+[connection signal="button_down" from="Panel/ScrollContainer/VBoxContainer/Play" to="." method="startGame"]
 [connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/HBoxCont_UP/Button" to="." method="b_change_key_UP"]
 [connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/HBoxCont_DOWN/Button" to="." method="b_change_key_DOWN"]
 [connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/HBoxCont_LEFT/Button" to="." method="b_change_key_LEFT"]
@@ -378,11 +413,11 @@ text = "Quit Game"
 [connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/HBoxCont_SECONDITEM/Button" to="." method="b_change_key_SECONDITEM"]
 [connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/HBoxCont_THIRDITEM/Button" to="." method="b_change_key_THIRDITEM"]
 [connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/HBoxCont_BACK/Button" to="." method="b_change_key_BACK"]
-[connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/Fullscreen" to="." method="fullscreenToggle"]
+[connection signal="toggled" from="Panel/ScrollContainer/VBoxContainer/Fullscreen" to="." method="fullscreenToggle"]
+[connection signal="toggled" from="Panel/ScrollContainer/VBoxContainer/QuickUse" to="." method="quickUseChanged"]
 [connection signal="value_changed" from="Panel/ScrollContainer/VBoxContainer/mainVolume/HSlider" to="." method="mainVolChanged"]
 [connection signal="value_changed" from="Panel/ScrollContainer/VBoxContainer/musicVolume/HSlider" to="." method="musicVolChanged"]
 [connection signal="value_changed" from="Panel/ScrollContainer/VBoxContainer/soundEffectVolume/HSlider" to="." method="soundEffectVolChanged"]
 [connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/SaveSettings" to="." method="saveSettings"]
 [connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/LoadSettings" to="." method="loadSettings"]
-[connection signal="button_down" from="Panel/ScrollContainer/VBoxContainer/Play" to="." method="startGame"]
 [connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/QuitGame" to="." method="quitGame"]

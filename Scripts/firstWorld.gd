@@ -2,6 +2,8 @@ extends Node2D
 
 #Change to toggle touchscreen controls when exporting for different platforms
 const ISTOUCH = false
+#Make quick use the opposite value as istouch so that non-touchscreen users will have quickUse on by default and vice versa
+var quickUse = !ISTOUCH
 
 var touchUp = false
 var touchDown = false
