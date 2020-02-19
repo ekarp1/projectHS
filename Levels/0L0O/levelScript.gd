@@ -27,7 +27,7 @@ func interactedWObj(objType, objIndex):
 			match objIndex:
 				0:
 					# Toggle the text box if the player interacts with the first NPC
-					get_node("/root/World").toggleTextBox(NPCTEXT)
+					get_node("/root/World").toggleTextBox(NPCTEXT, 3)
 				1:
 					# Load the arena if the player interacts with the second NPC
 					get_node("/root/World").loadLevel(0, 1, 0)

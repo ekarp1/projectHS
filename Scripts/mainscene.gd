@@ -10,7 +10,7 @@ var soundEffectVol = 77
 
 func _ready():
 	_set_keys()
-	get_node("Panel/ScrollContainer/VBoxContainer/QuickUse").pressed = get_node("/root/World").quickUse
+	get_node("Panel/ScrollContainer/VBoxContainer/VBoxCont_QUCKUSE/QuickUse").pressed = get_node("/root/World").quickUse
 	# Make the Control settings invisible if it's using touchscreen
 	if (get_node("/root/World").ISTOUCH):
 		for j in ACTIONS:

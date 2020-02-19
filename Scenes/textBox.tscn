@@ -1,4 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Fonts/pixelFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scenes/textBox.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFontData" id=1]
 antialiased = false
@@ -12,22 +15,25 @@ font_data = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 24.0
-margin_top = 136.0
+margin_top = 96.0
 margin_right = -24.0
 margin_bottom = -4.0
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Background" type="Panel" parent="."]
 margin_right = 272.0
-margin_bottom = 40.0
+margin_bottom = 80.0
+rect_clip_content = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Background"]
-margin_right = 272.0
+margin_left = 8.0
+margin_right = 264.0
 margin_bottom = 40.0
 custom_fonts/font = SubResource( 2 )
 text = "hello"
@@ -37,3 +43,55 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Option4" type="Button" parent="Background"]
+visible = false
+margin_left = 8.0
+margin_top = 40.0
+margin_right = 136.0
+margin_bottom = 56.0
+custom_fonts/font = ExtResource( 1 )
+text = "hi"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Option3" type="Button" parent="Background"]
+visible = false
+margin_left = 136.0
+margin_top = 40.0
+margin_right = 263.0
+margin_bottom = 56.0
+custom_fonts/font = ExtResource( 1 )
+text = "ok"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Option2" type="Button" parent="Background"]
+visible = false
+margin_left = 8.0
+margin_top = 56.0
+margin_right = 136.0
+margin_bottom = 72.0
+custom_fonts/font = ExtResource( 1 )
+text = "lol"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Option1" type="Button" parent="Background"]
+visible = false
+margin_left = 136.0
+margin_top = 56.0
+margin_right = 264.0
+margin_bottom = 72.0
+custom_fonts/font = ExtResource( 1 )
+text = "bruh"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Background/Option4" to="." method="opt4pressed"]
+[connection signal="pressed" from="Background/Option3" to="." method="opt3pressed"]
+[connection signal="pressed" from="Background/Option2" to="." method="opt2pressed"]
+[connection signal="pressed" from="Background/Option1" to="." method="opt1pressed"]
