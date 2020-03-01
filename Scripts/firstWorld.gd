@@ -153,7 +153,7 @@ func togglePaused():
 func percentToDb(value):
 	return (value * 104/100) - 80
 
-func toggleTextBox(textBoxText, optNum=0):
+func toggleTextBox(textBoxText, optNum=0, opt1T="Option 1", opt2T="Option 2", opt3T="Option 3", opt4T="Option 4"):
 	if(textBox == null):
 		# Show the textbox
 		textBox = textBoxScene.instance()
@@ -161,7 +161,7 @@ func toggleTextBox(textBoxText, optNum=0):
 		get_node("/root/World/CanvasLayer").add_child(textBox)
 		# Change the text to say something
 		textBox.setText(textBoxText)
-		textBox.initOptions(optNum)
+		textBox.initOptions(optNum, opt1T, opt2T, opt3T, opt4T)
 	else:
 		# Delete the text box if the player interacts with the npc twice and it still exists
 		textBox.queue_free()

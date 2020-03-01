@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Fonts/pixelFont.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Scenes/textBox.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/textBox.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFontData" id=1]
 antialiased = false
