@@ -4,38 +4,22 @@ extends Control
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+var optFuncArray = [null, null, null, null]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-func initOptions(optNum, opt1T="Option 1", opt2T="Option 2", opt3T="Option 3", opt4T="Option 4"):
-	match optNum:
-		1:
-			get_node("Background/Option1").visible = true
-			get_node("Background/Option1").text = opt1T
-		2:
-			get_node("Background/Option1").visible = true
-			get_node("Background/Option1").text = opt1T
-			get_node("Background/Option2").visible = true
-			get_node("Background/Option2").text = opt2T
-		3:
-			get_node("Background/Option1").visible = true
-			get_node("Background/Option1").text = opt1T
-			get_node("Background/Option2").visible = true
-			get_node("Background/Option2").text = opt2T
-			get_node("Background/Option3").visible = true
-			get_node("Background/Option3").text = opt3T
-		4:
-			get_node("Background/Option1").visible = true
-			get_node("Background/Option1").text = opt1T
-			get_node("Background/Option2").visible = true
-			get_node("Background/Option2").text = opt2T
-			get_node("Background/Option3").visible = true
-			get_node("Background/Option3").text = opt3T
-			get_node("Background/Option4").visible = true
-			get_node("Background/Option4").text = opt4T
+func initOptions(optionArray):
+	if optionArray.size() <= 4:
+		for i in range(0, optionArray.size()):
+			#Make the option visible
+			get_node("Background/Option" + str(i + 1)).visible = true
+			#Change the option text
+			get_node("Background/Option" + str(i + 1)).text = optionArray[i][0]
+			#Change the option's function
+			if(optionArray[i][1] != null):
+				optFuncArray[i] = optionArray[i][1]
 
 func setText(textVar):
 	get_node("Background/Label").text = textVar
@@ -44,15 +28,14 @@ func setText(textVar):
 #func _process(delta):
 #	pass
 
-
 func opt1pressed():
-	pass # Replace with function body.
+	optFuncArray[0].call_func()
 
 func opt2pressed():
-	pass # Replace with function body.
+	optFuncArray[1].call_func()
 
 func opt3pressed():
-	pass # Replace with function body.
+	optFuncArray[2].call_func()
 
 func opt4pressed():
-	pass # Replace with function body.
+	optFuncArray[3].call_func()

@@ -27,7 +27,8 @@ func interactedWObj(objType, objIndex):
 			match objIndex:
 				0:
 					# Toggle the text box if the player interacts with the first NPC
-					get_node("/root/World").toggleTextBox(NPCTEXT, 3, "Bruh", "Second", "Third")
+					get_node("/root/World").toggleTextBox(NPCTEXT, 
+					[["Bruh", funcref(self, "test_function")], ["Second", funcref(self, "test_function2")], ["Third", funcref(self, "test_function3")]])
 				1:
 					# Load the arena if the player interacts with the second NPC
 					get_node("/root/World").loadLevel(0, 1, 0)
@@ -50,6 +51,15 @@ func leftObjRange(objType, objIndex):
 			match objIndex:
 				0:
 					pass # Do nothing
+
+func test_function():
+	print("test1")
+
+func test_function2():
+	print("test2")
+
+func test_function3():
+	print("test3")
 
 func getDoorEntPos(doorIndex):
 	match doors[doorIndex][1]:
